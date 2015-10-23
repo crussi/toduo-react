@@ -162,6 +162,9 @@
         }
       }
     },
+    "formsy-material-ui": {
+      "version": "0.2.2"
+    },
     "formsy-react": {
       "version": "0.14.1"
     },
