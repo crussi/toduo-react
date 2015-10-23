@@ -6,15 +6,15 @@ const StartStep = {
 }
 function hello(){console.log('hello zzz data');}
 const ActionableStep = {
-    "component" :  <Actionable callback={MultiStep.handleClick}/>,
+    "component" :  Actionable,
     "icon" : "run"
 }
 const IsProjectStep = {
     "component" : IsProject,
     "icon" : "assignment"
 }
-const NonactionableStep = {
-    "component" : Nonactionable,
+const NonActionableStep = {
+    "component" : NonActionable,
     "icon" : "traffic"
 }
 const ApproveChangeStep = {
@@ -84,7 +84,7 @@ nextstep = {
     },
     "Actionable.No" : {
         "currentstep" : ActionableStep,
-        "nextstep" : NonactionableStep,
+        "nextstep" : NonActionableStep,
         "parameters" : "",
         "nextsteplevel" : 2,
         "mintotalsteps" : 3,
@@ -93,8 +93,8 @@ nextstep = {
         "minpctdone" : 0.67,
         "avgpctdone" : 0.67
     },
-    "Nonactionable.Trash" : {
-        "currentstep" : NonactionableStep,
+    "NonActionable.Trash" : {
+        "currentstep" : NonActionableStep,
         "nextstep" : ApproveChangeStep,
         "parameters" : "Task deleted ...",
         "nextsteplevel" : 3,
@@ -104,8 +104,8 @@ nextstep = {
         "minpctdone" : 1.00,
         "avgpctdone" : 1.00
     },
-    "Nonactionable.Someday" : {
-        "currentstep" : Nonactionable,
+    "NonActionable.Someday" : {
+        "currentstep" : NonActionable,
         "nextstep" : ApproveChangeStep,
         "parameters" : "Task moved to the Someday/maybe list  ...",
         "nextsteplevel" : 3,
@@ -115,8 +115,8 @@ nextstep = {
         "minpctdone" : 1.00,
         "avgpctdone" : 1.00
     },
-    "Nonactionable.Reference" : {
-        "currentstep" : Nonactionable,
+    "NonActionable.Reference" : {
+        "currentstep" : NonActionable,
         "nextstep" : ApproveChangeStep,
         "parameters" : "Task moved to the Reference list ...",
         "nextsteplevel" : 3,
