@@ -10,8 +10,8 @@ const {
 
     } = mui;
 
-const Colors = mui.Styles.Colors;
-const ThemeManager = new mui.Styles.ThemeManager();
+//const Colors = mui.Styles.Colors;
+//const ThemeManager = new mui.Styles.ThemeManager();
 
 
 App = React.createClass({
@@ -58,21 +58,10 @@ App = React.createClass({
     childContextTypes: {
         muiTheme: React.PropTypes.object
     },
-    //shouldComponentUpdate: function(nextProps, nextState) {
-    //    //return nextProps.id !== this.props.id;
-    //    console.log('shouldComponentUpdate');
-    //    return true;
-    //},
-    //componentWillUpdate: function(nextProps, nextState) {
-    //    console.log('componentWillUpdate');
-    //},
-    //componentDidUpdate: function(prevProps, prevState) {
-    //    console.log('componentDidUpdate');
-    //},
-    getChildContext: function() {
+    getChildContext(){
         return {
-            muiTheme: ThemeManager.getCurrentTheme()
-        };
+            muiTheme: Styles.ThemeManager.getMuiTheme(Styles.LightRawTheme)
+        }
     },
     getMeteorData() {
         return {

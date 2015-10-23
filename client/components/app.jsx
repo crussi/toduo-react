@@ -2,7 +2,7 @@ const {
   RaisedButton
 } = mui;
 
-const ThemeManager = new mui.Styles.ThemeManager();
+//const ThemeManager = new mui.Styles.ThemeManager();
 
 App = React.createClass({
   mixins: [ReactMeteorData],
@@ -14,10 +14,10 @@ App = React.createClass({
   childContextTypes: {
     muiTheme: React.PropTypes.object
   },
-  getChildContext: function() {
+  getChildContext(){
     return {
-      muiTheme: ThemeManager.getCurrentTheme()
-    };
+      muiTheme: Styles.ThemeManager.getMuiTheme(Styles.LightRawTheme)
+    }
   },
   getMeteorData() {
     return {

@@ -11,8 +11,8 @@ const {
 
     } = mui;
 
-const Colors = mui.Styles.Colors;
-const ThemeManager = new mui.Styles.ThemeManager();
+//const Colors = mui.Styles.Colors;
+//const ThemeManager = new mui.Styles.ThemeManager();
 
 const styles = {
     contentHeaderMenuLink: {
@@ -46,10 +46,10 @@ SidebarApp = React.createClass({
     childContextTypes: {
         muiTheme: React.PropTypes.object
     },
-    getChildContext: function() {
+    getChildContext(){
         return {
-            muiTheme: ThemeManager.getCurrentTheme()
-        };
+            muiTheme: Styles.ThemeManager.getMuiTheme(Styles.LightRawTheme)
+        }
     },
     getMeteorData() {
         return {

@@ -1,5 +1,5 @@
-const Colors = mui.Styles.Colors;
-const ThemeManager = new mui.Styles.ThemeManager();
+//const Colors = mui.Styles.Colors;
+//const ThemeManager = new mui.Styles.ThemeManager();
 
 CollapseCard = React.createClass({
     getInitialState(){
@@ -11,10 +11,10 @@ CollapseCard = React.createClass({
     childContextTypes: {
         muiTheme: React.PropTypes.object
     },
-    getChildContext: function() {
+    getChildContext(){
         return {
-            muiTheme: ThemeManager.getCurrentTheme()
-        };
+            muiTheme: Styles.ThemeManager.getMuiTheme(Styles.LightRawTheme)
+        }
     },
     headingClicked(){
         //console.log('card headingClicked');
