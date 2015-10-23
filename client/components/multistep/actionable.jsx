@@ -6,11 +6,7 @@ Actionable = React.createClass({
             callback: this.hello
         };
     },
-    hello(){
-      console.log('hello');
-    },
     handleClick(val){
-        console.log('Actionable.' + val);
         this.props.callback('Actionable.' + val);
     },
     render(){
