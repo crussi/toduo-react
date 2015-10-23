@@ -82,7 +82,7 @@ SearchBar = React.createClass({
         this.search(suggestion);
     },
     onSubmit(e) {
-        console.log('onSubmit');
+        //console.log('onSubmit');
         e.preventDefault();
         let input = this.state.value.trim();
         //if (input) return;
@@ -93,7 +93,7 @@ SearchBar = React.createClass({
         }
     },
     onClear(e) {
-        console.log('onClear');
+        //console.log('onClear');
         e.preventDefault();
         this.setState({value: ""});
     },

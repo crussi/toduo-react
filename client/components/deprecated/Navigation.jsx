@@ -39,7 +39,7 @@ Navigation = React.createClass({
     //    this.props.callbackOnNavChange(false);
     //},
     onChange() {
-        console.log('Navigation onChange');
+        //console.log('Navigation onChange');
     },
     navStateIsOpen(){
         return this.refs.leftNav.state.open;

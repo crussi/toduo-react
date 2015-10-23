@@ -49,7 +49,7 @@ InboxList = React.createClass({
                     let secondaryText = moment(item.dateCreated).fromNow();
                     //console.log('today: ' + today);
                     //console.log('days: ' + days);
-                    console.log('inboxList item.description: ' + item.description);
+                    //console.log('inboxList item.description: ' + item.description);
                     return [
                         //<ListItem key={ item._id }
                         //          primaryText={ item.description }

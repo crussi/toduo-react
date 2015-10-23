@@ -11,21 +11,21 @@ BrowserOld = React.createClass({
     //},
     navUp() {
         for (let i = 0; i < this.state.path.length; i++) {
-            console.log('navUp b4 path i: ' + i + ' = ' + this.state.path[i].name);
+            //console.log('navUp b4 path i: ' + i + ' = ' + this.state.path[i].name);
         }
         let fun = function(){
             let id = this.currNode() ? this.currNode().id : '';
-            console.log('navUp setState id: ' + id);
+            //console.log('navUp setState id: ' + id);
             for (let i = 0; i < this.state.path.length; i++) {
-                console.log('navUp af path i: ' + i + ' = ' + this.state.path[i].name);
+                //console.log('navUp af path i: ' + i + ' = ' + this.state.path[i].name);
             }
         };
         //this.currNode().isLeafNode ? this.popNode(2) : this.popNode(1);
         if (this.currNode().isLeafNode) {
-            console.log('navUp isLeafNode');
+            //console.log('navUp isLeafNode');
             this.setState({path: this.state.path.slice(0, -2)},fun);
         } else {
-            console.log('navUp isLeafNode');
+            //console.log('navUp isLeafNode');
             this.setState({path: this.state.path.slice(0, -1)},fun);
         }
         //this._goRoute('');
@@ -36,17 +36,17 @@ BrowserOld = React.createClass({
     navDown(index,item,isleaf) {
         //console.log('navDown id: ' + id);
         for (let i = 0; i < this.state.path.length; i++) {
-            console.log('pop b4 path i: ' + i + ' = ' + this.state.path[i].name);
+            //console.log('pop b4 path i: ' + i + ' = ' + this.state.path[i].name);
         }
         let fun = function(){
             let id = this.currNode() ? this.currNode().id : '';
-            console.log('popNode setState id: ' + id);
+            //console.log('popNode setState id: ' + id);
             for (let i = 0; i < this.state.path.length; i++) {
-                console.log('pop af path i: ' + i + ' = ' + this.state.path[i].name);
+                //console.log('pop af path i: ' + i + ' = ' + this.state.path[i].name);
             }
         };
         if (isleaf && this.currNode() && this.currNode().isLeafNode) {
-            console.log('isleaf pop ...' + item.name);
+            //console.log('isleaf pop ...' + item.name);
             this.setState({path: this.state.path.slice(0, -1)},fun);
             this.pushNode(this.newNode(index, item.id, item.name, isleaf));
             this.setState({selectedId: item.id});
@@ -77,13 +77,13 @@ BrowserOld = React.createClass({
     },
     popNode(amt,callback){
         for (let i = 0; i < this.state.path.length; i++) {
-            console.log('pop b4 path i: ' + i + ' = ' + this.state.path[i].name);
+            //console.log('pop b4 path i: ' + i + ' = ' + this.state.path[i].name);
         }
         let fun = function(){
             let id = this.currNode() ? this.currNode().id : '';
-            console.log('popNode setState id: ' + id);
+            //console.log('popNode setState id: ' + id);
             for (let i = 0; i < this.state.path.length; i++) {
-                console.log('pop af path i: ' + i + ' = ' + this.state.path[i].name);
+                //console.log('pop af path i: ' + i + ' = ' + this.state.path[i].name);
             }
         };
         this.setState({path: this.state.path.slice(0, -1)},fun);
@@ -138,7 +138,7 @@ BrowserOld = React.createClass({
                     let itemClass = !isSelected ? "item" : "item" + color;
                     if (isSelected) {
                         //console.log("name: " + item.name + " iconClass: " + iconClass + " itemClass: " + itemClass);
-                        console.log("name: " + item.name);
+                        //console.log("name: " + item.name);
                     }
                     if (item.children) {
 

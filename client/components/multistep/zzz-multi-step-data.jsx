@@ -4,7 +4,7 @@ const StartStep = {
     "component" : MultiStep,
     "icon" : ""
 }
-function hello(){console.log('hello zzz data');}
+
 const ActionableStep = {
     "component" :  Actionable,
     "icon" : "run"
