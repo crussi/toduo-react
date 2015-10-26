@@ -1,6 +1,6 @@
 injectTapEventPlugin = require("react-tap-event-plugin");
 Paper = require('material-ui/lib/paper');
-RaisedButton = require('material-ui/lib/raised-button');
+FlatButton = require('material-ui/lib/flat-button');
 mui = require('material-ui');
 injectTapEventPlugin = require('react-tap-event-plugin');
 Styles = require('material-ui/lib/styles');
