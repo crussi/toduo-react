@@ -3,8 +3,13 @@ const {
 } = mui;
 
 const styles = {
+    container : {
+        minHeight: '75px',
+        position: 'relative'
+    },
     step: {
         marginLeft: '55px'
+
     },
     question: {
         fontSize: '1rem',
@@ -15,6 +20,13 @@ const styles = {
     },
     button: {
         margin: '5px'
+    },
+    btnPrev: {
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        fontSize: '12px',
+        color: 'rgba(0,0,0,0.50)'
     }
 };
 
@@ -34,16 +46,26 @@ MultiStepYesNo = React.createClass({
         this.props.callback(val);
     },
     render(){
+        let contStyle = styles.container;
         let stepStyle = styles.step;
         let questionStyle = styles.question;
-        let buttonStyle = styles.button;
-console.dir(this.props);
-        return <div style={stepStyle}>
+        let btnStyle = styles.button;
+        let btnPrevStyle = styles.btnPrev;
+        let prevBtn;
+        if (this.props.displayCancel == true) {
+            prevBtn = <FlatButton style={btnPrevStyle}  label="Prev" onClick={e => this.handleClick("Prev")}><i className="zmdi zmdi-chevron-left btn-icon"/></FlatButton>;
+        }
+        return <div style={contStyle}>
 
-            <span style={questionStyle}>{this.props.question}</span>
+            <div style={stepStyle}>
 
-                <FlatButton style={buttonStyle}  label="Yes" onClick={e => this.handleClick("Yes")}/>
-                <FlatButton style={buttonStyle}  label="No" onClick={e => this.handleClick("No")}/>`
+                <span style={questionStyle}>{this.props.question}</span>
+
+                <FlatButton style={btnStyle}  label="Yes" onClick={e => this.handleClick("Yes")}/>
+                <FlatButton style={btnStyle}  label="No" onClick={e => this.handleClick("No")}/>
+
+            </div>
+            {prevBtn}
         </div>
     }
 });

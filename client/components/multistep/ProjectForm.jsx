@@ -201,7 +201,7 @@ ProjectForm = React.createClass({
                                             <FlatButton
                                                 style={styles.submit}
                                                 type="submit"
-                                                label="Next"
+                                                label="Submit"
 
                                                 disabled={!this.state.canSubmit} />
                                         </div>

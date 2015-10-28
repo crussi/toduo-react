@@ -1,9 +1,11 @@
 
+let ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 MultiStep = React.createClass({
     getInitialState() {
         return {
-            key: "MultiStep.Expand"
+            prevkey: "",
+            nextkey: "MultiStep.Expand"
         }
     },
     componentWillMount(){
@@ -15,18 +17,25 @@ MultiStep = React.createClass({
     handleClick(val){
         //console.log('MultiStep: ' + val);
         //console.log(this.props.nextstep["Actionable.Yes"]);
-        this.setState({ key: val });
+        if (val.toUpperCase() !== "CANCEL") {
+            this.setState({prevkey: this.state.nextkey});
+            this.setState({nextkey: val});
+        } else {
+
+        }
     },
     render(){
-        let key = this.state.key;
-        console.log('key: ' + key);
-        let nextstep = this.props.nextstep[key].nextstep;
-        let stepProps = JSON.stringify(this.props.nextstep[key], null, 4);
+        let nextkey = this.state.nextkey;
+        console.log('nextkey: ' + nextkey);
+        let nextstep = this.props.nextstep[nextkey].nextstep;
+        let stepProps = JSON.stringify(this.props.nextstep[nextkey], null, 4);
 
         let comp = React.cloneElement(nextstep.component, { callback: this.handleClick, stepProps: stepProps });
 
         return <div>
+            <ReactCSSTransitionGroup transitionName="example">
             {comp}
+            </ReactCSSTransitionGroup>
         </div>
     }
 });

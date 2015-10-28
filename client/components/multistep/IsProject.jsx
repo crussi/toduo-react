@@ -8,6 +8,6 @@ IsProject = React.createClass({
         this.props.callback('IsProject.' + val);
     },
     render(){
-        return <MultiStepYesNo question="Is this a project?" callback={this.handleClick}/>
+        return <MultiStepYesNo question="Is this a project?" callback={this.handleClick} displayCancel={true}/>
     }
 });

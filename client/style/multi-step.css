@@ -7,3 +7,12 @@
     /*padding-top: 20px;*/
     /*padding-bottom: 40px;*/
 /*}*/
+
+.btn-icon {
+    float: left;
+    clear: left;
+    padding-left: 12px;
+    line-height: 36px;
+    vertical-align: middle;
+    height: 100%;
+}
