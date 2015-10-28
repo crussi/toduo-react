@@ -37,15 +37,13 @@ MultiStepYesNo = React.createClass({
         let stepStyle = styles.step;
         let questionStyle = styles.question;
         let buttonStyle = styles.button;
-        let clear = {clear:'both'};
+console.dir(this.props);
         return <div style={stepStyle}>
 
             <span style={questionStyle}>{this.props.question}</span>
 
                 <FlatButton style={buttonStyle}  label="Yes" onClick={e => this.handleClick("Yes")}/>
-                <FlatButton style={buttonStyle}  label="No" onClick={e => this.handleClick("No")}/>
-
-            <div style={clear}></div>
+                <FlatButton style={buttonStyle}  label="No" onClick={e => this.handleClick("No")}/>`
         </div>
     }
 });

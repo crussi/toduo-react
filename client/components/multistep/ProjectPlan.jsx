@@ -5,7 +5,7 @@ const {
 const styles = {
     step: {
         marginLeft: '55px',
-        minHeight: '250px'
+        minHeight: '300px'
     },
     question: {
         fontSize: '1rem',
@@ -32,7 +32,8 @@ ProjectPlan = React.createClass({
         }
     },
     handleClick(val){
-        this.props.callback(val);
+        console.log('projectplan val: ' + val);
+        this.props.callback('ProjectPlan.' + val);
     },
     render(){
         let stepStyle = styles.step;
@@ -41,7 +42,7 @@ ProjectPlan = React.createClass({
 
         return <div style={stepStyle}>
 
-            <ProjectForm/>
+            <ProjectForm callback={this.handleClick}/>
 
         </div>
     }

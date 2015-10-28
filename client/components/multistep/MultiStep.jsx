@@ -19,15 +19,12 @@ MultiStep = React.createClass({
     },
     render(){
         let key = this.state.key;
-        //console.log('multistep render key: ' + key);
-        //console.dir(this.props.nextstep[key]);
-        //console.dir(this.props.nextstep[key].nextstep);
-        let comp = React.cloneElement(this.props.nextstep[key].nextstep.component, { callback: this.handleClick });
-        //comp/({callback : this.handleClick});
-        //console.dir(comp.props);
-        //console.dir(comp.props.callback);
-        //comp.prototype.hello();
-        //console.dir(comp);
+        console.log('key: ' + key);
+        let nextstep = this.props.nextstep[key].nextstep;
+        let stepProps = JSON.stringify(this.props.nextstep[key], null, 4);
+
+        let comp = React.cloneElement(nextstep.component, { callback: this.handleClick, stepProps: stepProps });
+
         return <div>
             {comp}
         </div>

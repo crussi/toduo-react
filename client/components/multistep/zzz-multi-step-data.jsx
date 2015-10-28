@@ -1,59 +1,73 @@
 //Note: this file was named zzz-... because this needs to load last after all
 //jsx components
 const StartStep = {
+    "name": "StartStep",
     "component" : MultiStep,
     "icon" : ""
 }
 
 const ActionableStep = {
+    "name": "Actionable",
     "component" :  Actionable,
     "icon" : "run"
 }
 const IsProjectStep = {
+    "name": "IsProject",
     "component" : IsProject,
     "icon" : "assignment"
 }
 const NonActionableStep = {
+    "name" : "NonActionable",
     "component" : NonActionable,
     "icon" : "traffic"
 }
 const ApproveChangeStep = {
+    "name" : "ApproveChange",
     "component" : ApproveChange,
     "icon" : "thumb-up"
 }
 const ProjectPlanStep = {
+    "name" : "ProjectPlan",
     "component" : ProjectPlan,
     "icon" : "assignment-o"
 }
 const NextActionStep = {
+    "name" : "NextAction",
     "component" : NextAction,
     "icon" : "playlist-plus"
 }
 const IsDoableNowStep = {
+    "name" : "IsDoableNow",
     "component" : IsDoableNow,
     "icon" : "timer"
 }
 const DoItNowStep = {
+    "name" : "DoItNow",
     "component" : DoItNow,
     "icon" : "check-square"
 }
 const IsDelegatableStep = {
+    "name" : "IsDelegatable",
     "component" : IsDelegatable,
     "icon" : "account-add"
 }
 const DelegateStep = {
+    "name" : "Delegate",
     "component" : Delegate,
     "icon" : "account-box"
 }
 const IsSchedulableStep = {
+    "name" : "IsSchedulable",
     "component" : IsSchedulable,
     "icon" : "time"
 }
 const ScheduleStep = {
+    "name" : "Schedule",
     "component" : Schedule,
     "icon" : "calendar"
 }
 const RefineActionStep = {
+    "name" : "RefineAction",
     "component" : RefineAction,
     "icon" : "rotate-right"
 }

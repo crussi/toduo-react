@@ -10,6 +10,7 @@ Actionable = React.createClass({
         this.props.callback('Actionable.' + val);
     },
     render(){
-        return <MultiStepYesNo question="Is this actionable?" callback={this.handleClick}/>
+        let stepProps = this.props.stepProps;
+        return <MultiStepYesNo question="Is this actionable?" callback={this.handleClick} {...stepProps}/>
     }
 });
