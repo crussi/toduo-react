@@ -3,20 +3,21 @@ const {
 } = mui;
 
 const styles = {
-    container : {
-        minHeight: '75px',
-        position: 'relative'
-    },
-    step: {
-        marginLeft: '55px'
-
-    },
+    //container : {
+    //    minHeight: '75px',
+    //    position: 'relative'
+    //},
+    //step: {
+    //    marginLeft: '55px'
+    //
+    //},
     question: {
         fontSize: '1rem',
         fontWeight: 'bold',
-        paddingTop: '20px',
+        //paddingTop: '20px',
         paddingBottom: '20px',
-        marginRight: '10px'
+        marginRight: '10px',
+        marginTop: '10px'
     },
     button: {
         margin: '5px'
@@ -46,26 +47,36 @@ MultiStepYesNo = React.createClass({
         this.props.callback(val);
     },
     render(){
-        let contStyle = styles.container;
-        let stepStyle = styles.step;
+        //let contStyle = styles.container;
+        //let stepStyle = styles.step;
         let questionStyle = styles.question;
         let btnStyle = styles.button;
         let btnPrevStyle = styles.btnPrev;
         let prevBtn;
-        if (this.props.displayCancel == true) {
+        //let stepProps = this.props.stepProps;
+        //console.log('MultiStepYesNo.jsx');
+        console.dir(this.props);
+        if (this.props.hasPrev == true) {
+            console.log('hasPrev == true');
             prevBtn = <FlatButton style={btnPrevStyle}  label="Prev" onClick={e => this.handleClick("Prev")}><i className="zmdi zmdi-chevron-left btn-icon"/></FlatButton>;
         }
-        return <div style={contStyle}>
-
-            <div style={stepStyle}>
-
-                <span style={questionStyle}>{this.props.question}</span>
-
-                <FlatButton style={btnStyle}  label="Yes" onClick={e => this.handleClick("Yes")}/>
-                <FlatButton style={btnStyle}  label="No" onClick={e => this.handleClick("No")}/>
-
+        return <div className="col-xs-12 container">
+                <div className="box box-container step">
+                    <div className="row">
+                        <div className="col-xs-4">
+                            <div className="box-first box-container">
+                                <div style={questionStyle}>{this.props.question}</div>
+                            </div>
+                        </div>
+                        <div className="col-xs-4">
+                            <div className="box-first box-container">
+                                <FlatButton style={btnStyle}  label="Yes" onClick={e => this.handleClick("Yes")}/>
+                                <FlatButton style={btnStyle}  label="No" onClick={e => this.handleClick("No")}/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {prevBtn}
             </div>
-            {prevBtn}
-        </div>
     }
 });

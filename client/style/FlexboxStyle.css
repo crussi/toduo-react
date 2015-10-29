@@ -1,15 +1,16 @@
 .box,.box-first,.box-large,.box-nested,.box-row
 {
     /*background: #007FFF;*/
-    border: 1px solid #FFF;
+    /*border: 1px solid #FFF;*/
     border-radius: 2px;
     box-sizing: border-box;
-    color: #fff;
+    /*color: #fff;*/
     margin-bottom: 0;
+
     min-height: 1rem;
     overflow: hidden;
     position: relative;
-    text-align: center;
+    /*text-align: center;*/
 }
 .box-row
 {
