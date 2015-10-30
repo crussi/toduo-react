@@ -1,4 +1,6 @@
 let { FormsyCheckbox, FormsyDate, FormsyRadio, FormsyRadioGroup, FormsySelect, FormsyText, FormsyTime, FormsyToggle } = FMUI;
+let ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+
 const {
     TextField
     } = mui;
@@ -36,10 +38,11 @@ ProjectForm = React.createClass({
     //],
 
     styles: {
-        paper: {
+        container: {
             width: '100%',
             margin: 0,
-            padding: 0
+            padding: 0,
+            position: 'relative'
         },
         submit: {
             marginTop: 32
@@ -104,7 +107,10 @@ ProjectForm = React.createClass({
             }
         });
     },
-
+    handleClick(val){
+        console.log('ProjectForm handleClick val: ' + val);
+        this.props.callback(val);
+    },
     notifyFormError: function (data) {
         console.error('Form error:', data);
     },
@@ -127,6 +133,8 @@ ProjectForm = React.createClass({
         window.removeEventListener('resize', this.handleResize);
     },
     render: function () {
+        //console.log('ProjectForm render');
+
         //Here is how to apply styles to text fields:
         //style={{color:'blue'}} hintStyle={{color:'red'}} underlineStyle={{borderColor:'green'}} underlineFocusStyle={{borderColor:'purple'}}
         //floatingLabelStyle={{color:'yellow'}}
@@ -147,11 +155,15 @@ ProjectForm = React.createClass({
         minDate.setFullYear(minDate.getFullYear() - 1);
         maxDate.setDate(today.getDate());
         maxDate.setFullYear(minDate.getFullYear() + 11);
-
+        let childProps = {
+            callback: this.handleClick,
+            hasPrev: true
+        };
         //console.log('minDate: ' + minDate);
         //console.log('maxDate: ' + maxDate);
         return (
-            <div style={styles.paper}>
+            <div style={styles.container}>
+                <ReactCSSTransitionGroup transitionName="example" transitionAppear={true} transitionAppearTimeout={250}>
                 <Formsy.Form
                     onValid={this.enableButton}
                     onInvalid={this.disableButton}
@@ -212,7 +224,9 @@ ProjectForm = React.createClass({
 
                     </div>
                 </Formsy.Form>
+                </ReactCSSTransitionGroup>
             </div>
+
         );
     }
 });

@@ -32,11 +32,22 @@ CollapseCard = React.createClass({
             secondaryText: this.props.secondaryText,
             avatar: this.props.avatar
         };
+        let comp;
+        if (this.state.active) {
+            comp = <MultiStep nextstep={this.props.nextstep}/>
+        } else {
+            comp = <div className="multi-step-filler"></div>
+        }
+        bodyProps = {
+            stepName : this.props.nextstep.name,
+            slideDirection: slideDirection
+        }
+
         return (
             <div className={cardClass}>
                 <CollapseCardHeading {...headingProps} headingClicked={this.headingClicked} />
-                <CollapseCardBody slideDirection={slideDirection}>
-                    {this.props.content}
+                <CollapseCardBody {...bodyProps}>
+                    {comp}
                 </CollapseCardBody>
             </div>
         );

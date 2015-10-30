@@ -1,16 +1,6 @@
-const {
-    FlatButton
-} = mui;
+const { FlatButton } = mui;
 
 const styles = {
-    //container : {
-    //    minHeight: '75px',
-    //    position: 'relative'
-    //},
-    //step: {
-    //    marginLeft: '55px'
-    //
-    //},
     question: {
         fontSize: '1rem',
         fontWeight: 'bold',
@@ -21,18 +11,8 @@ const styles = {
     },
     button: {
         margin: '5px'
-    },
-    btnPrev: {
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        fontSize: '12px',
-        color: 'rgba(0,0,0,0.50)'
     }
 };
-
-//const Colors = mui.Styles.Colors;
-//const ThemeManager = new mui.Styles.ThemeManager();
 
 MultiStepYesNo = React.createClass({
     childContextTypes: {
@@ -47,19 +27,9 @@ MultiStepYesNo = React.createClass({
         this.props.callback(val);
     },
     render(){
-        //let contStyle = styles.container;
-        //let stepStyle = styles.step;
+        //console.log('MultiStepYesNo render');
         let questionStyle = styles.question;
         let btnStyle = styles.button;
-        let btnPrevStyle = styles.btnPrev;
-        let prevBtn;
-        //let stepProps = this.props.stepProps;
-        //console.log('MultiStepYesNo.jsx');
-        console.dir(this.props);
-        if (this.props.hasPrev == true) {
-            console.log('hasPrev == true');
-            prevBtn = <FlatButton style={btnPrevStyle}  label="Prev" onClick={e => this.handleClick("Prev")}><i className="zmdi zmdi-chevron-left btn-icon"/></FlatButton>;
-        }
         return <div className="col-xs-12 container">
                 <div className="box box-container step">
                     <div className="row">
@@ -76,7 +46,6 @@ MultiStepYesNo = React.createClass({
                         </div>
                     </div>
                 </div>
-                {prevBtn}
             </div>
     }
 });

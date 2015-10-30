@@ -102,7 +102,7 @@ BrowserOld = React.createClass({
         //console.log('browser render');
         let filteredItems = this.state.path.filter(function(node){return !node.isLeafNode});
         let selectedId = this.state.path.length > 0 ? this.state.path[this.state.path.length-1].id : '';
-        console.log('render selectedId: ' + selectedId);
+        //console.log('render selectedId: ' + selectedId);
         let parent = {};
 
         const items = filteredItems.reduce(function(items, key) {

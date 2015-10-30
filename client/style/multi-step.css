@@ -9,12 +9,16 @@
 /*}*/
 
 .btn-icon {
+    font-size: 18px;
     float: left;
     clear: left;
     padding-left: 12px;
     line-height: 36px;
     vertical-align: middle;
     height: 100%;
+}
+.multi-step {
+    position: relative;
 }
 .multi-step > i.zmdi {
 
@@ -24,9 +28,10 @@
     height: 22px;
     text-align: center;
 }
-.multi-step .container {
+.multi-step .container,
+.multi-step-filler {
     min-height: 75px;
-    position: relative;
+
 }
 .multi-step .step {
     margin-left: 55px;

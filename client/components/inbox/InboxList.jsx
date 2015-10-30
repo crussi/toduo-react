@@ -23,7 +23,7 @@ InboxList = React.createClass({
         }
     },
     selectItem(itemId) {
-        console.log('selectItem itemId: ' + itemId);
+        //console.log('selectItem itemId: ' + itemId);
         //this.props.onItemSelected(itemId);
     },
     render() {
@@ -63,8 +63,9 @@ InboxList = React.createClass({
                           //onClick={ this.selectItem.bind(this, item._id) }
                           avatar={ <Avatar style={avatarStyle}>{days}</Avatar> }
                           secondaryText={ "Entered " + secondaryText }
-                          content={<MultiStep nextstep={this.props.nextstep}/>}
-                          />,
+                          nextstep={this.props.nextstep}
+                          />
+                        //content={<MultiStep nextstep={this.props.nextstep}/>}
                         //<ListDivider/>
                     ]
                 })

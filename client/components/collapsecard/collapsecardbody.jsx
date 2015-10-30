@@ -14,14 +14,20 @@ CollapseCardBody = React.createClass({
         };
     },
     componentWillReceiveProps: function(nextProps) {
-        if (nextProps.slideDirection !== this.props.slideDirection) {
+        console.log('before slide nextProps:');
+        console.dir(nextProps);
+        let dirChanged = nextProps.slideDirection !== this.props.slideDirection;
+        let stepChanged = nextProps.stepName !== this.props.stepName;
+        if (dirChanged || stepChanged) {
             this.setState({ slideDirection: nextProps.slideDirection });
             let $el = $(this.getDOMNode());
             switch (nextProps.slideDirection.trim()) {
                 case 'up':
+                    console.log('slideUp');
                     $el.slideUp('animationDuration: 400');
                     break;
                 case 'down':
+                    console.log('slidedown');
                     $el.slideDown('animationDuration: 400');
                     break;
                 default:

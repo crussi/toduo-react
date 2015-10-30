@@ -33,16 +33,24 @@ ProjectPlan = React.createClass({
     },
     handleClick(val){
         console.log('projectplan val: ' + val);
-        this.props.callback('ProjectPlan.' + val);
+        this.props.callback(val.toUpperCase() !== "PREV" ? 'ProjectPlan.' + val : val);
     },
     render(){
+        //console.log('ProjectPlan render');
+
         let stepStyle = styles.step;
         let questionStyle = styles.question;
         let buttonStyle = styles.button;
 
+        let childProps = {
+
+            callback: this.handleClick,
+            hasPrev: true
+        };
+
         return <div style={stepStyle}>
 
-            <ProjectForm callback={this.handleClick}/>
+            <ProjectForm {...childProps}/>
 
         </div>
     }
