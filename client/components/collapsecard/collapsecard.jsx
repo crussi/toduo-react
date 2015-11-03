@@ -20,6 +20,12 @@ CollapseCard = React.createClass({
         //console.log('card headingClicked');
         this.setState({ active: !this.state.active });
     },
+    handleRouting(){
+        this.props.handleRouting(this.props.cardKey);
+    },
+    handleRemove(){
+        this.props.handleRemove(this.props.cardKey);
+    },
     render: function () {
         //console.log('this.state.active: ' + this.state.active);
         let cardClass = "collapse-card" + (this.state.active ? " active" : "");
@@ -32,16 +38,21 @@ CollapseCard = React.createClass({
             secondaryText: this.props.secondaryText,
             avatar: this.props.avatar
         };
+        let compProps = {
+            nextstep: this.props.nextstep,
+            handleRouting: this.handleRouting,
+            handleRemove: this.handleRemove,
+        };
         let comp;
         if (this.state.active) {
-            comp = <MultiStep nextstep={this.props.nextstep}/>
+            comp = <MultiStep {...compProps}/>
         } else {
             comp = <div className="multi-step-filler"></div>
         }
-        bodyProps = {
+        let bodyProps = {
             stepName : this.props.nextstep.name,
             slideDirection: slideDirection
-        }
+        };
 
         return (
             <div className={cardClass}>

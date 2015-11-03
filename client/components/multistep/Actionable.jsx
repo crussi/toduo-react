@@ -2,14 +2,14 @@ let ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 Actionable = React.createClass({
 
-    handleClick(val){
-        this.props.callback('Actionable.' + val);
+    handleNextStep(val){
+        this.props.handleNextStep('Actionable.' + val);
     },
     render(){
         //console.log('Actionable render');
         let childProps = {
             question: "Is this actionable?",
-            callback: this.handleClick
+            handleNextStep: this.handleNextStep
         };
         //let iconClass = "zmdi zmdi-" + this.props.icon;
         return <div>

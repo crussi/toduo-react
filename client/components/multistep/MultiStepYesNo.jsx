@@ -23,8 +23,8 @@ MultiStepYesNo = React.createClass({
             muiTheme: Styles.ThemeManager.getMuiTheme(Styles.LightRawTheme)
         }
     },
-    handleClick(val){
-        this.props.callback(val);
+    handleNextStep(val){
+        this.props.handleNextStep(val);
     },
     render(){
         //console.log('MultiStepYesNo render');
@@ -40,8 +40,8 @@ MultiStepYesNo = React.createClass({
                         </div>
                         <div className="col-xs-4">
                             <div className="box-first box-container">
-                                <FlatButton style={btnStyle}  label="Yes" onClick={e => this.handleClick("Yes")}/>
-                                <FlatButton style={btnStyle}  label="No" onClick={e => this.handleClick("No")}/>
+                                <FlatButton style={btnStyle}  label="Yes" onClick={e => this.handleNextStep("Yes")}/>
+                                <FlatButton style={btnStyle}  label="No" onClick={e => this.handleNextStep("No")}/>
                             </div>
                         </div>
                     </div>

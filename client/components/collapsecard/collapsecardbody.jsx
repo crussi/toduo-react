@@ -14,8 +14,8 @@ CollapseCardBody = React.createClass({
         };
     },
     componentWillReceiveProps: function(nextProps) {
-        console.log('before slide nextProps:');
-        console.dir(nextProps);
+        //console.log('before slide nextProps:');
+        //console.dir(nextProps);
         let dirChanged = nextProps.slideDirection !== this.props.slideDirection;
         let stepChanged = nextProps.stepName !== this.props.stepName;
         if (dirChanged || stepChanged) {

@@ -5,7 +5,12 @@ const {
     TextField
     } = mui;
 ProjectForm = React.createClass({
-
+    mixins: [ReactMeteorData],
+    getMeteorData() {
+        return {
+            //someVar: Session.get('someVar')
+        }
+    },
     childContextTypes: {
         muiTheme: React.PropTypes.object
     },
@@ -70,46 +75,53 @@ ProjectForm = React.createClass({
             canSubmit: false
         });
     },
-    addTask: function(project, task) {
-        if (task && task.trim().length > 0) {
-            project.Tasks.push({"Task":task, "IsComplete":0});
-        }
-    },
-    createProject: function(data) {
-        let project = {};
-        project.Title = data.Title;
-        project.Outcome = data.Outcome;
-        project.DateDue = data.DateDue;
-        project.PctComplete = 0.00;
-        project.IsComplete = 0;
-        project.Tasks = [];
-        this.addTask(project,data.Task1);
-        this.addTask(project,data.Task2);
-        this.addTask(project,data.Task3);
-        this.addTask(project,data.Task4);
-        this.addTask(project,data.Task5);
-        return project;
-    },
+    //addTask: function(project, task) {
+    //    if (task && task.trim().length > 0) {
+    //        project.Tasks.push({"Task":task, "IsComplete":0});
+    //    }
+    //},
+    //createProject: function(data) {
+    //    let project = {};
+    //    project.Title = data.Title;
+    //    project.Outcome = data.Outcome;
+    //    project.DateDue = data.DateDue;
+    //    project.PctComplete = 0.00;
+    //    project.IsComplete = 0;
+    //    project.Tasks = [];
+    //    this.addTask(project,data.Task1);
+    //    this.addTask(project,data.Task2);
+    //    this.addTask(project,data.Task3);
+    //    this.addTask(project,data.Task4);
+    //    this.addTask(project,data.Task5);
+    //    return project;
+    //},
     submitForm: function (data) {
         //console.dir(data);
         //alert(JSON.stringify(data, null, 4));
-        let project = this.createProject(data);
+        //let project = this.createProject(data);
         //console.dir(project);
         //if (!data) return;
         //console.info("Parent onSubmit input: " + input);
-        Meteor.call("/projects/addNew", project, (err, res) => {
+        data.Title = "Complete Michele's planter box";
+        data.Outcome = "Michele will have a place to plant plants.";
+        data.dateDue = "2015-11-01";
+        data.Task1 = "Buy garden soil";
+        data.Task2 = "Mix with soil ammendments";
+        data.Task3 = "Fill to overflowing";
+        //let projectId;
+
+        Meteor.call("/projects/addNew", data, (err, res) => {
             console.log('meteor.call projects addNew');
             if (err) {
                 console.log("Failed to add new project.");
                 return;
             } else {
-                this.props.callback("Next");
+                console.log("project add success id: " + res);
+                //projectId = res;
+                sessionStore.set("project-new",res);
+                this.props.handleSubmit();
             }
         });
-    },
-    handleClick(val){
-        console.log('ProjectForm handleClick val: ' + val);
-        this.props.callback(val);
     },
     notifyFormError: function (data) {
         console.error('Form error:', data);
@@ -163,7 +175,7 @@ ProjectForm = React.createClass({
         //console.log('maxDate: ' + maxDate);
         return (
             <div style={styles.container}>
-                <ReactCSSTransitionGroup transitionName="example" transitionAppear={true} transitionAppearTimeout={250}>
+
                 <Formsy.Form
                     onValid={this.enableButton}
                     onInvalid={this.disableButton}
@@ -178,13 +190,13 @@ ProjectForm = React.createClass({
                                         <div className="box-first box-container box-big">
                                             <FormsyText style={textStyle}
                                                 name='Title'
-                                                required
+                                                //required
                                                 hintText="What is project's title?"
                                                 floatingLabelText="Title" />
 
                                             <FormsyText style={textStyle}
                                                 name='Outcome'
-                                                required
+                                                //required
                                                 hintText="What is the expected outcome?"
                                                 floatingLabelText="Expected outcome" />
 
@@ -200,7 +212,7 @@ ProjectForm = React.createClass({
                                         <div className="collapse-card__sectiontitle ">Identify the first few steps ...</div>
                                         <div className="box-first box-container box-big">
                                             <ul>
-                                                <li><i className="zmdi zmdi-n-1-square"></i><FormsyText style={textStyle} hintStyle={hintStyle} underlineStyle={underlineStyle} name="Task1" required/></li>
+                                                <li><i className="zmdi zmdi-n-1-square"></i><FormsyText style={textStyle} hintStyle={hintStyle} underlineStyle={underlineStyle} name="Task1" /></li>
                                                 <li><i className="zmdi zmdi-n-2-square"></i><FormsyText style={textStyle} hintStyle={hintStyle} underlineStyle={underlineStyle} name="Task2"/></li>
                                                 <li><i className="zmdi zmdi-n-3-square"></i><FormsyText style={textStyle} hintStyle={hintStyle} underlineStyle={underlineStyle} name="Task3"/></li>
                                                 <li><i className="zmdi zmdi-n-4-square"></i><FormsyText style={textStyle} hintStyle={hintStyle} underlineStyle={underlineStyle} name="Task4"/></li>
@@ -224,7 +236,6 @@ ProjectForm = React.createClass({
 
                     </div>
                 </Formsy.Form>
-                </ReactCSSTransitionGroup>
             </div>
 
         );

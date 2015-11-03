@@ -124,8 +124,8 @@ FlowRouter.route('/someday',{
     }
 });
 var projectRoutes = FlowRouter.group({
-    prefix: '/projects',
-    name: 'projects'
+    prefix: '/project',
+    name: 'project'
 })
 projectRoutes.route('/',{
     subscriptions: function(params) {
@@ -136,12 +136,15 @@ projectRoutes.route('/',{
         ReactLayout.render(SidebarApp, {content(){ return <Container name={"projects"} />}});
     }
 });
-projectRoutes.route('/project/:id',{
+projectRoutes.route('/:id',{
     subscriptions: function(params) {
         //this.register('menuItems', Meteor.subscribe('menu-items'));
+        console.log('project subscription id: ' + params.id);
+        this.register('project', Meteor.subscribe('project', params.id));
     },
-    action: function() {
+    action: function(params) {
         //ReactLayout.render(SidebarApp, {content: <Container name={"project detail"} />, routestate: routestate[Routes.projects_1]});
+        console.log('project route id: ' + params.id);
         ReactLayout.render(SidebarApp, {content(){ return <Container name={"project detail"} />}});
     }
 });

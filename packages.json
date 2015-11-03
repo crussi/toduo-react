@@ -2,5 +2,6 @@
   "material-ui": "0.12.3",
   "externalify": "0.1.0",
   "formsy-react": "0.14.1",
-  "formsy-material-ui": "0.2.2"
+  "formsy-material-ui": "0.2.2",
+  "react-css-transition-replace": "0.1.4"
 }

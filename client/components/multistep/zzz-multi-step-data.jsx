@@ -31,6 +31,11 @@ const ProjectPlanStep = {
     "component" : ProjectPlan,
     "icon" : "assignment-o"
 }
+const ProjectTransitionStep = {
+    "name" : "ProjectTransition",
+    "component" : ProjectTransition,
+    "icon" : "thumb-up"
+}
 const NextActionStep = {
     "name" : "NextAction",
     "component" : NextAction,
@@ -162,9 +167,9 @@ nextstep = {
         "minpctdone" : 0.38,
         "avgpctdone" : 0.44
     },
-    "ProjectPlan.Next" : {
+    "ProjectPlan.Submit" : {
         "currentstep" : ProjectPlanStep,
-        "nextstep" : ApproveChangeStep,
+        "nextstep" : ProjectTransitionStep,
         "parameters" : "Project created ...",
         "nextsteplevel" : 4,
         "mintotalsteps" : 4,

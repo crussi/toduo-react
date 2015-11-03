@@ -1,4 +1,6 @@
+
 Meteor.startup(function () {
+  sessionStore = new ReactiveDict();
   injectTapEventPlugin();
   //console.log('startup render sidebarapp');
   //React.render(<App />, document.getElementById("container"));

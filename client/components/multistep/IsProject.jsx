@@ -2,16 +2,16 @@ let ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 IsProject = React.createClass({
 
-    handleClick(val){
+    handleNextStep(val){
 
-        this.props.callback(val.toUpperCase() !== "PREV" ? 'IsProject.' + val : val);
+        this.props.handleNextStep('IsProject.' + val );
     },
     render(){
         //console.log('IsProject render');
 
         let childProps = {
             question: "Is this a project?",
-            callback: this.handleClick
+            handleNextStep: this.handleNextStep
         };
         //console.dir(childProps);
         let iconClass = "zmdi zmdi-" + this.props.icon;

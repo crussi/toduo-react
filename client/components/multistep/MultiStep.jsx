@@ -3,51 +3,67 @@
 MultiStep = React.createClass({
     getInitialState() {
         return {
-            prevkey: [],
             nextkey: ["MultiStep.Expand"]
         }
     },
     componentWillMount(){
-        //console.log('MultiStep componentWillMount');
-        //
-        //React.render(<Actionable callback={this.handleClick} />, document.getElementById("multi-step-container"));
+        console.log('multistep ')
+        let $el = $(this.getDOMNode());
+        $el.animate({height: '+=50'}, 500);
+    },
+    componentWillReceiveProps: function(nextProps) {
 
     },
     shouldComponentUpdate: function(nextProps, nextState){
         //console.log('MultiStep shouldComponentUpdate');
         return true;
     },
-    handleClick(val){
-        //console.log('MultiStep: ' + val);
-        //console.log(this.props.nextstep["Actionable.Yes"]);
-        if (val.toUpperCase() !== "PREV") {
-            //this.setState({prevkey: this.state.nextkey});
-            //this.setState({nextkey: val});
-            this.setState({nextkey: this.state.nextkey.concat(val)});
-        } else {
-            //console.log('MultiStep val: ' + val);
-            this.setState({nextkey: this.state.nextkey.slice(0, -1)});
+    handleNextStep(val){
+        switch (val.toUpperCase()) {
+
+            case "ROUTE":
+                this.props.callback(val);
+                break;
+            case "DONE":
+                this.props.callback(val);
+                break;
+            default:
+                this.setState({nextkey: this.state.nextkey.concat(val)});
+                break;
         }
+        //if (val.toUpperCase() !== "PREV") {
+        //    this.setState({nextkey: this.state.nextkey.concat(val)});
+        //} else {
+        //    this.setState({nextkey: this.state.nextkey.slice(0, -1)});
+        //}
+    },
+    handlePrev(){
+        this.setState({nextkey: this.state.nextkey.slice(0, -1)});
+    },
+    handleRouting(){
+        this.props.handleRouting();
+    },
+    handleRemove(){
+        this.props.handleRemove();
     },
     render(){
         const {nextkey} = this.state;
         let key = nextkey[nextkey.length-1];
-        //let hasPrev = nextkey.length > 1;
-        //console.dir(nextkey);
-        //console.log('MultiStep key: ' + key);
         let nextstep = this.props.nextstep[key].nextstep;
-        //let stepProps = JSON.stringify(this.props.nextstep[key], null, 4);
-        //console.dir(stepProps);
-        //stepProps.hasPrev = hasPrev;
-        //console.log('nextkey.length: ' + nextkey.length);
         let childProps = {
-            callback: this.handleClick,
+            handleNextStep: this.handleNextStep,
+            handleRouting: this.handleRouting,
+            handleRemove: this.handleRemove,
             icon: nextstep.icon,
             avgpctdone: this.props.nextstep[key].avgpctdone
         };
+        let hasPrev = nextkey.length > 1;
+        if (key.indexOf("Submit") > -1) {
+            hasPrev = false;
+        }
         let prevProps = {
-            callback: this.handleClick,
-            hasPrev: nextkey.length > 1
+            callback: this.handlePrev,
+            hasPrev: hasPrev
         }
         //console.dir(childProps);
         //let comp = React.cloneElement(nextstep.component, { callback: this.handleClick, stepProps: stepProps });

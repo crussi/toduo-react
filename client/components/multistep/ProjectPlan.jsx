@@ -31,9 +31,8 @@ ProjectPlan = React.createClass({
             muiTheme: Styles.ThemeManager.getMuiTheme(Styles.LightRawTheme)
         }
     },
-    handleClick(val){
-        console.log('projectplan val: ' + val);
-        this.props.callback(val.toUpperCase() !== "PREV" ? 'ProjectPlan.' + val : val);
+    handleSubmit(){
+        this.props.handleNextStep('ProjectPlan.Submit');
     },
     render(){
         //console.log('ProjectPlan render');
@@ -44,7 +43,7 @@ ProjectPlan = React.createClass({
 
         let childProps = {
 
-            callback: this.handleClick,
+            handleSubmit: this.handleSubmit,
             hasPrev: true
         };
 

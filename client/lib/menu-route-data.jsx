@@ -24,7 +24,7 @@ routes = {
     scheduled_calendar : "/scheduled/calendar",
     scheduled_reminders : "/scheduled/reminders",
     someday : "/someday",
-    projects : "/projects",
+    projects : "/project",
     project_1 : "/project/1",
     project_2 : "/project/2",
     project_3 : "/project/3",
@@ -154,7 +154,7 @@ const projects = {
     icon: "assignment-o",
     color: "pink",
     route: routes.projects,
-    children: [project1,project1,project3]
+    children: [project1,project2,project3]
 };
 const review = {
     id: "IsYuh58UnkyUYZKU0TcGXw",

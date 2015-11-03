@@ -208,11 +208,19 @@
         }
       }
     },
+    "react-css-transition-replace": {
+      "version": "0.1.4",
+      "dependencies": {
+        "classnames": {
+          "version": "2.2.0"
+        }
+      }
+    },
     "react-dom": {
-      "version": "0.14.0",
+      "version": "0.14.1",
       "dependencies": {
         "react": {
-          "version": "0.14.0",
+          "version": "0.14.1",
           "dependencies": {
             "envify": {
               "version": "3.4.0",

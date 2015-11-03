@@ -25,3 +25,6 @@ momentjs:moment
 jquery
 jagi:astronomy
 jagi:astronomy-validators
+jagi:astronomy-timestamp-behavior
+reactive-var
+reactive-dict
