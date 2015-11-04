@@ -24,7 +24,7 @@ FlowRouter.route('/',{
 
 FlowRouter.route('/inbox',{
     subscriptions: function(params) {
-        this.register('inboxItems', Meteor.subscribe('inbox'));
+        //this.register('inboxItems', Meteor.subscribe('inbox'));
     },
     action: function() {
         //ReactLayout.render(SidebarApp, {content: <Container name={"inbox"}><InboxList /></Container>});
@@ -145,7 +145,11 @@ projectRoutes.route('/:id',{
     action: function(params) {
         //ReactLayout.render(SidebarApp, {content: <Container name={"project detail"} />, routestate: routestate[Routes.projects_1]});
         console.log('project route id: ' + params.id);
-        ReactLayout.render(SidebarApp, {content(){ return <Container name={"project detail"} />}});
+        //ReactLayout.render(SidebarApp, {content(){ return <Container name={"project detail"} />}});
+        ReactLayout.render(SidebarApp, {content() {
+            return <ProjectPage id={params.id} />;
+        }});
+
     }
 });
 

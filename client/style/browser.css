@@ -29,6 +29,7 @@
     /*background: linear-gradient(to right, #ededed 0%, #f6f6f6 47%, white 100%);*/
     font-size: 18px;
     font-weight: 400;
+    text-overflow: ellipsis;
 }
 
 /*a.item:after {*/
@@ -37,6 +38,7 @@
 /*}*/
 .browser .menu-item {
     position: relative;
+    text-overflow: ellipsis;
 }
 .browser .item:hover {
     background: #eee;

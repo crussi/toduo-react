@@ -31,9 +31,9 @@ SliderMenu = React.createClass({
     navDown(item,index) {
         if (item.children) {
             this.setState({path: this.state.path.concat(index)});
-            this.setState({selected: this.state.selected.slice(0,-1).concat(item).concat('')});
+            this.setState({selected: this.state.selected.slice(0,-1).concat({"id": item.id, "route": item.route}).concat('')});
         } else {
-            this.setState({selected: this.state.selected.slice(0,-1).concat(item)})
+            this.setState({selected: this.state.selected.slice(0,-1).concat({"id": item.id, "route": item.route})})
         }
         if (item.route) {
             FlowRouter.go(item.route);
@@ -42,6 +42,7 @@ SliderMenu = React.createClass({
     render() {
         const {path} = this.state;
         let selectedId = '';
+        //let item = {};
         let item = {};
         if (this.state.selected.length > 0) {
             item = this.state.selected[this.state.selected.length-1];

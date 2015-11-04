@@ -18,7 +18,7 @@ const IsProjectStep = {
 }
 const NonActionableStep = {
     "name" : "NonActionable",
-    "component" : NonActionable,
+    "component" : NonActionableForm,
     "icon" : "traffic"
 }
 const ApproveChangeStep = {
@@ -124,7 +124,7 @@ nextstep = {
         "avgpctdone" : 1.00
     },
     "NonActionable.Someday" : {
-        "currentstep" : NonActionable,
+        "currentstep" : NonActionableStep,
         "nextstep" : ApproveChangeStep,
         "parameters" : "Task moved to the Someday/maybe list  ...",
         "nextsteplevel" : 3,
@@ -135,7 +135,7 @@ nextstep = {
         "avgpctdone" : 1.00
     },
     "NonActionable.Reference" : {
-        "currentstep" : NonActionable,
+        "currentstep" : NonActionableStep,
         "nextstep" : ApproveChangeStep,
         "parameters" : "Task moved to the Reference list ...",
         "nextsteplevel" : 3,
