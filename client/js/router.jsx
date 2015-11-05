@@ -15,7 +15,7 @@ FlowRouter.route('/',{
         //    renderDashboard();
         //} else {
             //FlowLayout.render('layout-unauth', { header: "headerunauth", content: "content-mktg"});
-
+console.log('route /');
         ReactLayout.render(SidebarApp, {content(){ return <Container name={"world"} />}});
         //}
 

@@ -1,5 +1,25 @@
 
 SliderMenu = React.createClass({
+    mixins: [ReactMeteorData],
+    getMeteorData() {
+
+        const subHandles = [
+            Meteor.subscribe("menudata")
+        ];
+
+        const subsReady = _.all(subHandles, function (handle) {
+            return handle.ready();
+        });
+
+        return {
+            subsReady: subsReady,
+            items: MenuData.find({}).fetch(),
+            //currentUser: Meteor.user(),
+            //disconnected: ShowConnectionIssues.get() && (! Meteor.status().connected)
+            disconnected: false
+        };
+
+    },
     getInitialState() {
         return {
             path: [],
@@ -9,7 +29,6 @@ SliderMenu = React.createClass({
     componentDidMount: function() {
         window.addEventListener('popstate', this.handleRouteChange);
     },
-
     componentWillUnmount: function() {
         window.removeEventListener('popstate', this.handleRouteChange);
     },
@@ -29,32 +48,37 @@ SliderMenu = React.createClass({
         this.setState({selected: this.state.selected.slice(0, -1)});
     },
     navDown(item,index) {
+        //console.log('navDown index:' + index);
+        //console.dir(item);
         if (item.children) {
             this.setState({path: this.state.path.concat(index)});
-            this.setState({selected: this.state.selected.slice(0,-1).concat({"id": item.id, "route": item.route}).concat('')});
+            this.setState({selected: this.state.selected.slice(0,-1).concat({"_id": item._id, "route": item.route}).concat('')});
         } else {
-            this.setState({selected: this.state.selected.slice(0,-1).concat({"id": item.id, "route": item.route})})
+            this.setState({selected: this.state.selected.slice(0,-1).concat({"_id": item._id, "route": item.route})})
         }
         if (item.route) {
             FlowRouter.go(item.route);
         }
     },
     render() {
+        //console.log('slidermenu render ');
+        //console.dir(this.data);
         const {path} = this.state;
         let selectedId = '';
         //let item = {};
         let item = {};
         if (this.state.selected.length > 0) {
             item = this.state.selected[this.state.selected.length-1];
-            selectedId = item.id;
+            selectedId = item._id;
         }
-
+console.log('selectedId: ' + selectedId);
         let parent = {};
+
         const items = path.reduce(function(items, key) {
             //console.log('inside reduce items: ' + items + ' key: ' + key);
             parent = items[key];
             return items[key].children;
-        }, this.props.items) || this.props.items;
+        }, this.data.items) || this.data.items;
 
         let navicon, navtitle;
         if (path.length > 0) {

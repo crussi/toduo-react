@@ -17,7 +17,7 @@ SliderMenuItem = React.createClass({
         //console.log('item.name: ' + item.name);
         let color = ' color-' + item.color + '-500';
         let iconClass = "zmdi zmdi-" + item.icon + color;
-        let isSelected = item.id == this.props.selectedId;
+        let isSelected = item._id == this.props.selectedId;
         let itemClass = "item " + (isSelected ? color : "");
         //console.log('itemClass: ' + itemClass);
 

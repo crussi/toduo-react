@@ -1,5 +1,6 @@
 // if the database is empty on server start, create some sample data.
 Meteor.startup(function () {
+    //Prep test inbox items
     Inbox.remove({});
     if (Inbox.find().count() === 0) {
         var timestamp = (new Date()).getTime();
@@ -69,18 +70,11 @@ Meteor.startup(function () {
 
         ];
 
-
-
         _.each(data, function(item) {
             var list_id = Inbox.insert({description: item.description, dateCreated: item.dateCreated
-                });
-
-            //_.each((item).items, function(text) {
-            //    Todos.insert({listId: list_id,
-            //        text: text,
-            //        createdAt: new Date(timestamp)});
-            //    timestamp += 1; // ensure unique timestamp.
-            //});
+            });
         });
+
+
     }
 });

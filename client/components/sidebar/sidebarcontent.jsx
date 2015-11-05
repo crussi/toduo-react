@@ -23,6 +23,7 @@ const styles = {
 
 SidebarContent = React.createClass({
     render() {
+        //console.log('sidebarcontent render');
         let style = styles.sidebar;
 
         if (this.props.style) {
