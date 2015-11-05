@@ -39,6 +39,7 @@ CollapseCard = React.createClass({
             avatar: this.props.avatar
         };
         let compProps = {
+            title: this.props.primaryText,
             nextstep: this.props.nextstep,
             handleRouting: this.handleRouting,
             handleRemove: this.handleRemove,

@@ -65,19 +65,64 @@ NonActionableForm = React.createClass({
         });
     },
     submitForm: function (data) {
+        let taskType = data.nonactionableGroup.toUpperCase();
+        data.Title = this.props.title;
+        data.TaskType = taskType;
+        switch (taskType) {
+            case "SOMEDAY":
+                this.moveToSomeday(data);
+                break;
+            case "REFERENCE":
+                this.moveToReference(data);
+                break;
+            case "TRASH":
+                this.moveToTrash(data);
+                break;
+        }
+    },
+    moveToSomeday(data) {
+        console.log('move to someday');
 
-        //Meteor.call("/projects/addNew", data, (err, res) => {
-        //    console.log('meteor.call projects addNew');
-        //    if (err) {
-        //        console.log("Failed to add new project.");
-        //        return;
-        //    } else {
-        //        console.log("project add success id: " + res);
-        //        //projectId = res;
-        //        sessionStore.set("project-new",res);
-        //        this.props.handleSubmit();
-        //    }
-        //});
+        Meteor.call("/tasks/addNew", data, (err, res) => {
+            console.log('meteor.call projects addNew');
+            if (err) {
+                console.log("Failed to add new task.");
+                return;
+            } else {
+                console.log("task add success id: " + res._id);
+                sessionStore.set("nonactionable-new",res);
+            }
+        });
+    },
+    moveToReference(data) {
+        console.log('move to reference');
+
+        Meteor.call("/references/addNew", data, (err, res) => {
+            console.log('meteor.call reference addNew');
+            if (err) {
+                console.log("Failed to add new reference.");
+                console.dir(err);
+                return;
+            } else {
+                console.log("reference add success id: " + res._id);
+                sessionStore.set("nonactionable-new",res);
+            }
+        });
+    },
+    moveToTrash(data) {
+        console.log('move to trash');
+
+        Meteor.call("/trash/addNew", data, (err, res) => {
+            console.log('meteor.call trash addNew');
+            if (err) {
+                console.log("Failed to add new trash.");
+                console.dir(err);
+                return;
+            } else {
+                console.log("trash add success id: " + res._id);
+                sessionStore.set("nonactionable-new",res);
+            }
+        });
     },
     notifyFormError: function (data) {
         console.error('Form error:', data);
@@ -147,16 +192,17 @@ NonActionableForm = React.createClass({
                                             <FormsyRadioGroup name="nonactionableGroup" defaultSelected="someday">
                                                 <FormsyRadio
                                                     value="someday"
-                                                    label="Someday / maybe"
+                                                    label="I'll do this someday / maybe"
+                                                    style={styles.radio}/>
+                                                <FormsyRadio
+                                                    value="reference"
+                                                    label="Keep for reference"
                                                     style={styles.radio}/>
                                                 <FormsyRadio
                                                     value="trash"
-                                                    label="Trash"
+                                                    label="Move to trash"
                                                     style={styles.radio} />
-                                                <FormsyRadio
-                                                    value="reference"
-                                                    label="Reference"
-                                                    style={styles.radio}/>
+
                                             </FormsyRadioGroup>
 
                                         </div>

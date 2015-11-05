@@ -6,31 +6,20 @@ MultiStep = React.createClass({
             nextkey: ["MultiStep.Expand"]
         }
     },
-    componentWillMount(){
-        console.log('multistep ')
-        let $el = $(this.getDOMNode());
-        $el.animate({height: '+=50'}, 500);
-    },
-    componentWillReceiveProps: function(nextProps) {
-
-    },
-    shouldComponentUpdate: function(nextProps, nextState){
-        //console.log('MultiStep shouldComponentUpdate');
-        return true;
-    },
     handleNextStep(val){
-        switch (val.toUpperCase()) {
-
-            case "ROUTE":
-                this.props.callback(val);
-                break;
-            case "DONE":
-                this.props.callback(val);
-                break;
-            default:
-                this.setState({nextkey: this.state.nextkey.concat(val)});
-                break;
-        }
+        this.setState({nextkey: this.state.nextkey.concat(val)});
+        //switch (val.toUpperCase()) {
+        //
+        //    case "ROUTE":
+        //        this.props.callback(val);
+        //        break;
+        //    case "DONE":
+        //        this.props.callback(val);
+        //        break;
+        //    default:
+        //        this.setState({nextkey: this.state.nextkey.concat(val)});
+        //        break;
+        //}
         //if (val.toUpperCase() !== "PREV") {
         //    this.setState({nextkey: this.state.nextkey.concat(val)});
         //} else {
@@ -51,6 +40,7 @@ MultiStep = React.createClass({
         let key = nextkey[nextkey.length-1];
         let nextstep = this.props.nextstep[key].nextstep;
         let childProps = {
+            title: this.props.title,
             handleNextStep: this.handleNextStep,
             handleRouting: this.handleRouting,
             handleRemove: this.handleRemove,

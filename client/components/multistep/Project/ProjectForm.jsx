@@ -188,15 +188,19 @@ ProjectForm = React.createClass({
                                 <div className="row">
                                     <div className="col-xs-10 col-sm-5 col-md-5 col-lg-5">
                                         <div className="box-first box-container box-big">
+
                                             <FormsyText style={textStyle}
                                                 name='Title'
                                                 //required
+                                                maxLength={25}
                                                 hintText="What is project's title?"
                                                 floatingLabelText="Title" />
+
 
                                             <FormsyText style={textStyle}
                                                 name='Outcome'
                                                 //required
+                                                maxLength={100}
                                                 hintText="What is the expected outcome?"
                                                 floatingLabelText="Expected outcome" />
 

@@ -71,7 +71,7 @@ SliderMenu = React.createClass({
             item = this.state.selected[this.state.selected.length-1];
             selectedId = item._id;
         }
-console.log('selectedId: ' + selectedId);
+//console.log('selectedId: ' + selectedId);
         let parent = {};
 
         const items = path.reduce(function(items, key) {
