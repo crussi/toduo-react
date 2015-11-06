@@ -102,7 +102,7 @@ ProjectForm = React.createClass({
         //console.dir(project);
         //if (!data) return;
         //console.info("Parent onSubmit input: " + input);
-        data.Title = "Complete Michele's planter box";
+        data.Title = "Michele's planter box";
         data.Outcome = "Michele will have a place to plant plants.";
         data.dateDue = "2015-11-01";
         data.Task1 = "Buy garden soil";
@@ -116,9 +116,11 @@ ProjectForm = React.createClass({
                 console.log("Failed to add new project.");
                 return;
             } else {
-                console.log("project add success id: " + res);
+                console.dir(res);
+                console.log("project add success id: " + res._id);
+
                 //projectId = res;
-                sessionStore.set("project-new",res);
+                sessionStore.set("transition-new",res);
                 this.props.handleSubmit();
             }
         });

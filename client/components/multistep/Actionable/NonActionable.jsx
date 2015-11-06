@@ -65,23 +65,26 @@ NonActionableForm = React.createClass({
         });
     },
     submitForm: function (data) {
-        let taskType = data.nonactionableGroup.toUpperCase();
+        let taskType = data.nonactionableGroup;
         data.Title = this.props.title;
         data.TaskType = taskType;
         switch (taskType) {
-            case "SOMEDAY":
+            case "Someday":
                 this.moveToSomeday(data);
                 break;
-            case "REFERENCE":
+            case "Reference":
                 this.moveToReference(data);
                 break;
-            case "TRASH":
+            case "Trash":
                 this.moveToTrash(data);
                 break;
         }
+
     },
     moveToSomeday(data) {
         console.log('move to someday');
+        //TODO: this should not be hard coded
+        data.route = "/someday";
 
         Meteor.call("/tasks/addNew", data, (err, res) => {
             console.log('meteor.call projects addNew');
@@ -90,12 +93,16 @@ NonActionableForm = React.createClass({
                 return;
             } else {
                 console.log("task add success id: " + res._id);
-                sessionStore.set("nonactionable-new",res);
+                sessionStore.set("transition-new",res);
+                this.props.handleNextStep("NonActionable." + data.TaskType);
+
             }
         });
     },
     moveToReference(data) {
         console.log('move to reference');
+        //TODO: this should not be hard coded
+        data.route = "/lists/reference";
 
         Meteor.call("/references/addNew", data, (err, res) => {
             console.log('meteor.call reference addNew');
@@ -105,12 +112,15 @@ NonActionableForm = React.createClass({
                 return;
             } else {
                 console.log("reference add success id: " + res._id);
-                sessionStore.set("nonactionable-new",res);
+                sessionStore.set("transition-new",res);
+                this.props.handleNextStep("NonActionable." + data.TaskType);
             }
         });
     },
     moveToTrash(data) {
         console.log('move to trash');
+        //TODO: this should not be hard coded
+        data.route = "/lists/trash";
 
         Meteor.call("/trash/addNew", data, (err, res) => {
             console.log('meteor.call trash addNew');
@@ -120,7 +130,8 @@ NonActionableForm = React.createClass({
                 return;
             } else {
                 console.log("trash add success id: " + res._id);
-                sessionStore.set("nonactionable-new",res);
+                sessionStore.set("transition-new",res);
+                this.props.handleNextStep("NonActionable." + data.TaskType);
             }
         });
     },
@@ -189,17 +200,17 @@ NonActionableForm = React.createClass({
                                 <div className="row">
                                     <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
                                         <div className="box-first box-container" style={styles.inner}>
-                                            <FormsyRadioGroup name="nonactionableGroup" defaultSelected="someday">
+                                            <FormsyRadioGroup name="nonactionableGroup" defaultSelected="Someday">
                                                 <FormsyRadio
-                                                    value="someday"
+                                                    value="Someday"
                                                     label="I'll do this someday / maybe"
                                                     style={styles.radio}/>
                                                 <FormsyRadio
-                                                    value="reference"
+                                                    value="Reference"
                                                     label="Keep for reference"
                                                     style={styles.radio}/>
                                                 <FormsyRadio
-                                                    value="trash"
+                                                    value="Trash"
                                                     label="Move to trash"
                                                     style={styles.radio} />
 

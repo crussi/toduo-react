@@ -1,78 +1,63 @@
 //Note: this file was named zzz-... because this needs to load last after all
 //jsx components
 const StartStep = {
-    "name": "StartStep",
     "component" : MultiStep,
     "icon" : ""
 }
 
 const ActionableStep = {
-    "name": "Actionable",
     "component" :  Actionable,
     "icon" : "run"
 }
 const IsProjectStep = {
-    "name": "IsProject",
     "component" : IsProject,
     "icon" : "assignment"
 }
 const NonActionableStep = {
-    "name" : "NonActionable",
     "component" : NonActionableForm,
     "icon" : "traffic"
 }
 const ApproveChangeStep = {
-    "name" : "ApproveChange",
     "component" : ApproveChange,
     "icon" : "thumb-up"
 }
+const InboxTransitionStep = {
+    "component" : InboxTransition,
+    "icon" : "thumb-up"
+}
 const ProjectPlanStep = {
-    "name" : "ProjectPlan",
     "component" : ProjectPlan,
     "icon" : "assignment-o"
 }
-const ProjectTransitionStep = {
-    "name" : "ProjectTransition",
-    "component" : ProjectTransition,
-    "icon" : "thumb-up"
-}
 const NextActionStep = {
-    "name" : "NextAction",
     "component" : NextAction,
     "icon" : "playlist-plus"
 }
 const IsDoableNowStep = {
-    "name" : "IsDoableNow",
     "component" : IsDoableNow,
     "icon" : "timer"
 }
 const DoItNowStep = {
-    "name" : "DoItNow",
     "component" : DoItNow,
     "icon" : "check-square"
 }
 const IsDelegatableStep = {
-    "name" : "IsDelegatable",
     "component" : IsDelegatable,
     "icon" : "account-add"
 }
 const DelegateStep = {
-    "name" : "Delegate",
     "component" : Delegate,
     "icon" : "account-box"
 }
 const IsSchedulableStep = {
-    "name" : "IsSchedulable",
     "component" : IsSchedulable,
     "icon" : "time"
 }
 const ScheduleStep = {
-    "name" : "Schedule",
     "component" : Schedule,
     "icon" : "calendar"
 }
 const RefineActionStep = {
-    "name" : "RefineAction",
     "component" : RefineAction,
     "icon" : "rotate-right"
 }
@@ -82,7 +67,6 @@ nextstep = {
     "MultiStep.Expand" : {
         "currentstep" : StartStep,
         "nextstep" : ActionableStep,
-        "parameters" : "",
         "nextsteplevel" : 1,
         "mintotalsteps" : 3,
         "maxtotalsteps" : 8,
@@ -93,7 +77,6 @@ nextstep = {
     "Actionable.Yes" : {
         "currentstep" : ActionableStep,
         "nextstep" : IsProjectStep,
-        "parameters" : "",
         "nextsteplevel" : 2,
         "mintotalsteps" : 4,
         "maxtotalsteps" : 8,
@@ -104,7 +87,6 @@ nextstep = {
     "Actionable.No" : {
         "currentstep" : ActionableStep,
         "nextstep" : NonActionableStep,
-        "parameters" : "",
         "nextsteplevel" : 2,
         "mintotalsteps" : 3,
         "maxtotalsteps" : 3,
@@ -114,8 +96,7 @@ nextstep = {
     },
     "NonActionable.Trash" : {
         "currentstep" : NonActionableStep,
-        "nextstep" : ApproveChangeStep,
-        "parameters" : "Task deleted ...",
+        "nextstep" : InboxTransitionStep,
         "nextsteplevel" : 3,
         "mintotalsteps" : 3,
         "maxtotalsteps" : 3,
@@ -125,8 +106,7 @@ nextstep = {
     },
     "NonActionable.Someday" : {
         "currentstep" : NonActionableStep,
-        "nextstep" : ApproveChangeStep,
-        "parameters" : "Task moved to the Someday/maybe list  ...",
+        "nextstep" : InboxTransitionStep,
         "nextsteplevel" : 3,
         "mintotalsteps" : 3,
         "maxtotalsteps" : 3,
@@ -136,8 +116,7 @@ nextstep = {
     },
     "NonActionable.Reference" : {
         "currentstep" : NonActionableStep,
-        "nextstep" : ApproveChangeStep,
-        "parameters" : "Task moved to the Reference list ...",
+        "nextstep" : InboxTransitionStep,
         "nextsteplevel" : 3,
         "mintotalsteps" : 3,
         "maxtotalsteps" : 3,
@@ -148,7 +127,6 @@ nextstep = {
     "IsProject.Yes" : {
         "currentstep" : IsProjectStep,
         "nextstep" : ProjectPlanStep,
-        "parameters" : "",
         "nextsteplevel" : 3,
         "mintotalsteps" : 4,
         "maxtotalsteps" : 4,
@@ -159,7 +137,6 @@ nextstep = {
     "IsProject.No" : {
         "currentstep" : IsProjectStep,
         "nextstep" : NextActionStep,
-        "parameters" : "",
         "nextsteplevel" : 3,
         "mintotalsteps" : 6,
         "maxtotalsteps" : 8,
@@ -169,8 +146,7 @@ nextstep = {
     },
     "ProjectPlan.Submit" : {
         "currentstep" : ProjectPlanStep,
-        "nextstep" : ProjectTransitionStep,
-        "parameters" : "Project created ...",
+        "nextstep" : InboxTransitionStep,
         "nextsteplevel" : 4,
         "mintotalsteps" : 4,
         "maxtotalsteps" : 4,
@@ -181,7 +157,6 @@ nextstep = {
     "NextAction.Next" : {
         "currentstep" : NextActionStep,
         "nextstep" : IsDoableNowStep,
-        "parameters" : "",
         "nextsteplevel" : 4,
         "mintotalsteps" : 6,
         "maxtotalsteps" : 8,
@@ -192,7 +167,6 @@ nextstep = {
     "IsDoableNow.Yes" : {
         "currentstep" : IsDoableNowStep,
         "nextstep" : DoItNowStep,
-        "parameters" : "",
         "nextsteplevel" : 5,
         "mintotalsteps" : 6,
         "maxtotalsteps" : 8,
@@ -203,7 +177,6 @@ nextstep = {
     "IsDoableNow.No" : {
         "currentstep" : IsDoableNowStep,
         "nextstep" : IsDelegatableStep,
-        "parameters" : "",
         "nextsteplevel" : 5,
         "mintotalsteps" : 7,
         "maxtotalsteps" : 8,
@@ -214,7 +187,6 @@ nextstep = {
     "DoItNow.Yes" : {
         "currentstep" : DoItNowStep,
         "nextstep" : ApproveChangeStep,
-        "parameters" : "Task marked as done ...",
         "nextsteplevel" : 6,
         "mintotalsteps" : 6,
         "maxtotalsteps" : 6,
@@ -225,7 +197,6 @@ nextstep = {
     "DoItNow.No" : {
         "currentstep" : DoItNowStep,
         "nextstep" : IsDelegatableStep,
-        "parameters" : "",
         "nextsteplevel" : 5,
         "mintotalsteps" : 7,
         "maxtotalsteps" : 8,
@@ -236,7 +207,6 @@ nextstep = {
     "IsDelegatable.Yes" : {
         "currentstep" : IsDelegatableStep,
         "nextstep" : DelegateStep,
-        "parameters" : "",
         "nextsteplevel" : 6,
         "mintotalsteps" : 7,
         "maxtotalsteps" : 7,
@@ -247,7 +217,6 @@ nextstep = {
     "IsDelegatable.No" : {
         "currentstep" : IsDelegatableStep,
         "nextstep" : IsSchedulableStep,
-        "parameters" : "",
         "nextsteplevel" : 6,
         "mintotalsteps" : 8,
         "maxtotalsteps" : 8,
@@ -258,7 +227,6 @@ nextstep = {
     "Delegate.Next" : {
         "currentstep" : DelegateStep,
         "nextstep" : ApproveChangeStep,
-        "parameters" : "Task delegated ...",
         "nextsteplevel" : 7,
         "mintotalsteps" : 7,
         "maxtotalsteps" : 7,
@@ -269,7 +237,6 @@ nextstep = {
     "IsSchedulable.Yes" : {
         "currentstep" : IsSchedulableStep,
         "nextstep" : ScheduleStep,
-        "parameters" : "",
         "nextsteplevel" : 7,
         "mintotalsteps" : 8,
         "maxtotalsteps" : 8,
@@ -280,7 +247,6 @@ nextstep = {
     "IsSchedulable.No" : {
         "currentstep" : IsSchedulableStep,
         "nextstep" : RefineActionStep,
-        "parameters" : "",
         "nextsteplevel" : 7,
         "mintotalsteps" : 8,
         "maxtotalsteps" : 8,
@@ -291,7 +257,6 @@ nextstep = {
     "Schedule.Next" : {
         "currentstep" : ScheduleStep,
         "nextstep" : ApproveChangeStep,
-        "parameters" : "Event has been scheduled ...",
         "nextsteplevel" : 8,
         "mintotalsteps" : 8,
         "maxtotalsteps" : 8,
@@ -302,7 +267,6 @@ nextstep = {
     "RefineAction.Next" : {
         "currentstep" : RefineActionStep,
         "nextstep" : ApproveChangeStep,
-        "parameters" : "New task created ...",
         "nextsteplevel" : 8,
         "mintotalsteps" : 8,
         "maxtotalsteps" : 8,

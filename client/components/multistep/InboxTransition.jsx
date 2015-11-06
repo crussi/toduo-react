@@ -15,7 +15,7 @@ const styles = {
     }
 };
 
-ProjectTransition = React.createClass({
+InboxTransition = React.createClass({
     childContextTypes: {
         muiTheme: React.PropTypes.object
     },
@@ -33,14 +33,14 @@ ProjectTransition = React.createClass({
     render(){
         let questionStyle = styles.question;
         let btnStyle = styles.button;
-        let title = sessionStore.get('project-new').Title;
-        let question = 'Your project, "' + title + '", was created ...'
+        let info = sessionStore.get('transition-new');
+        //let question = 'Your project, "' + title + '", was created ...'
         return <div className="col-xs-12 container">
             <div className="box box-container step">
                 <div className="row">
                     <div className="col-xs-8">
                         <div className="box-first box-container">
-                            <div style={questionStyle}>{question}</div>
+                            <div style={questionStyle}>{info.TransitionQuestion}</div>
                         </div>
                     </div>
                     <div className="col-xs-4">

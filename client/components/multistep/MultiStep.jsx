@@ -39,7 +39,7 @@ MultiStep = React.createClass({
         const {nextkey} = this.state;
         let key = nextkey[nextkey.length-1];
         let nextstep = this.props.nextstep[key].nextstep;
-        let childProps = {
+        let codeProps = {
             title: this.props.title,
             handleNextStep: this.handleNextStep,
             handleRouting: this.handleRouting,
@@ -55,9 +55,9 @@ MultiStep = React.createClass({
             callback: this.handlePrev,
             hasPrev: hasPrev
         }
-        //console.dir(childProps);
+        //console.dir(codeProps);
         //let comp = React.cloneElement(nextstep.component, { callback: this.handleClick, stepProps: stepProps });
-        let comp = React.cloneElement(nextstep.component, childProps);
+        let comp = React.cloneElement(nextstep.component, codeProps);
 
         return <div className="multi-step">
                 {comp}

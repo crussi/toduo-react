@@ -47,9 +47,13 @@ InboxList = React.createClass({
     //},
     handleRouting(cardKey){
         this.handleRemove(cardKey);
-        let _id = sessionStore.get('project-new')._id;
-        console.log('inboxList handleRouting id: ' + _id);
-        FlowRouter.go('/project/' + _id);
+        //let _id = sessionStore.get('project-new')._id;
+        //console.log('inboxList handleRouting id: ' + _id);
+        //FlowRouter.go('/project/' + _id);
+        let route = sessionStore.get('transition-new').route;
+        //let _id = sessionStore.get('transition-new')._id;
+        console.log('inboxList handleRouting route: ' + route);
+        FlowRouter.go(route);
     },
     handleRemove(cardKey){
         Meteor.call("/inbox/delete", cardKey, (err, res) => {

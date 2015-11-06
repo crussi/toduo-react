@@ -115,18 +115,33 @@ scheduledRoutes.route('/reminders',{
         ReactLayout.render(SidebarApp, {content(){ return <Container name={"reminders"} />}});
     }
 });
-FlowRouter.route('/someday',{
-    subscriptions: function(params) {
-        //this.register('menuItems', Meteor.subscribe('menu-items'));
-    },
+
+var somedayRoutes = FlowRouter.group({
+    prefix: '/someday',
+    name: 'someday'
+});
+
+somedayRoutes.route('/',{
     action: function() {
         ReactLayout.render(SidebarApp, {content(){ return <Container name={"someday"} />}});
     }
 });
+somedayRoutes.route('/:id',{
+
+    action: function(params) {
+        console.log('someday route id: ' + params.id);
+        ReactLayout.render(SidebarApp, {content() {
+            return <TaskPage id={params.id} />;
+        }});
+
+    }
+});
+
 var projectRoutes = FlowRouter.group({
     prefix: '/project',
     name: 'project'
-})
+});
+
 projectRoutes.route('/',{
     subscriptions: function(params) {
         //this.register('menuItems', Meteor.subscribe('menu-items'));
@@ -167,7 +182,8 @@ FlowRouter.route('/review',{
 var listsRoutes = FlowRouter.group({
     prefix: '/lists',
     name: 'lists'
-})
+});
+
 listsRoutes.route('/',{
     subscriptions: function(params) {
         //this.register('menuItems', Meteor.subscribe('menu-items'));
@@ -177,24 +193,29 @@ listsRoutes.route('/',{
         ReactLayout.render(SidebarApp, {content(){ return <Container name={"lists"} />}});
     }
 });
+
 listsRoutes.route('/checklists',{
-    subscriptions: function(params) {
-        //this.register('menuItems', Meteor.subscribe('menu-items'));
-    },
     action: function() {
-        //ReactLayout.render(SidebarApp, {content: <Container name={"checklists"} />, routestate: routestate[Routes.lists_checklists]});
         ReactLayout.render(SidebarApp, {content(){ return <Container name={"checklists"} />}});
     }
 });
+
 listsRoutes.route('/reference',{
-    subscriptions: function(params) {
-        //this.register('menuItems', Meteor.subscribe('menu-items'));
-    },
     action: function() {
-        //ReactLayout.render(SidebarApp, {content: <Container name={"reference"} />, routestate: routestate[Routes.lists_reference]});
         ReactLayout.render(SidebarApp, {content(){ return <Container name={"reference"} />}});
     }
 });
+
+listsRoutes.route('/reference/:id',{
+    action: function(params) {
+        console.log('reference route id: ' + params.id);
+        ReactLayout.render(SidebarApp, {content() {
+            return <ReferencePage id={params.id} />;
+        }});
+
+    }
+});
+
 listsRoutes.route('/done',{
     subscriptions: function(params) {
         //this.register('menuItems', Meteor.subscribe('menu-items'));
