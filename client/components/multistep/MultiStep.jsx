@@ -7,6 +7,7 @@ MultiStep = React.createClass({
         }
     },
     handleNextStep(val){
+        console.log('multisep val: ' + val );
         this.setState({nextkey: this.state.nextkey.concat(val)});
         //switch (val.toUpperCase()) {
         //
@@ -39,7 +40,7 @@ MultiStep = React.createClass({
         const {nextkey} = this.state;
         let key = nextkey[nextkey.length-1];
         let nextstep = this.props.nextstep[key].nextstep;
-        let codeProps = {
+        let compProps = {
             title: this.props.title,
             handleNextStep: this.handleNextStep,
             handleRouting: this.handleRouting,
@@ -48,16 +49,16 @@ MultiStep = React.createClass({
             avgpctdone: this.props.nextstep[key].avgpctdone
         };
         let hasPrev = nextkey.length > 1;
-        if (key.indexOf("Submit") > -1) {
+        if (nextstep.component == InboxTransition) {
             hasPrev = false;
         }
         let prevProps = {
             callback: this.handlePrev,
             hasPrev: hasPrev
         }
-        //console.dir(codeProps);
+        //console.dir(compProps);
         //let comp = React.cloneElement(nextstep.component, { callback: this.handleClick, stepProps: stepProps });
-        let comp = React.cloneElement(nextstep.component, codeProps);
+        let comp = React.cloneElement(nextstep.component, compProps);
 
         return <div className="multi-step">
                 {comp}

@@ -154,7 +154,7 @@ nextstep = {
         "minpctdone" : 1.00,
         "avgpctdone" : 1.00
     },
-    "NextAction.Next" : {
+    "NextAction.Submit" : {
         "currentstep" : NextActionStep,
         "nextstep" : IsDoableNowStep,
         "nextsteplevel" : 4,

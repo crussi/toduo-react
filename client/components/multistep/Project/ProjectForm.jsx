@@ -75,33 +75,7 @@ ProjectForm = React.createClass({
             canSubmit: false
         });
     },
-    //addTask: function(project, task) {
-    //    if (task && task.trim().length > 0) {
-    //        project.Tasks.push({"Task":task, "IsComplete":0});
-    //    }
-    //},
-    //createProject: function(data) {
-    //    let project = {};
-    //    project.Title = data.Title;
-    //    project.Outcome = data.Outcome;
-    //    project.DateDue = data.DateDue;
-    //    project.PctComplete = 0.00;
-    //    project.IsComplete = 0;
-    //    project.Tasks = [];
-    //    this.addTask(project,data.Task1);
-    //    this.addTask(project,data.Task2);
-    //    this.addTask(project,data.Task3);
-    //    this.addTask(project,data.Task4);
-    //    this.addTask(project,data.Task5);
-    //    return project;
-    //},
     submitForm: function (data) {
-        //console.dir(data);
-        //alert(JSON.stringify(data, null, 4));
-        //let project = this.createProject(data);
-        //console.dir(project);
-        //if (!data) return;
-        //console.info("Parent onSubmit input: " + input);
         data.Title = "Michele's planter box";
         data.Outcome = "Michele will have a place to plant plants.";
         data.dateDue = "2015-11-01";

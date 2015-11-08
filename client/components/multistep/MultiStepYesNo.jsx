@@ -30,10 +30,13 @@ MultiStepYesNo = React.createClass({
         //console.log('MultiStepYesNo render');
         let questionStyle = styles.question;
         let btnStyle = styles.button;
+        let question = this.props.question;
+        console.log('len: ' + question.length);
+        let questionClass = question.length <= 30 ? "col-xs-4" : "col-xs-5"
         return <div className="col-xs-12 container">
                 <div className="box box-container step">
                     <div className="row">
-                        <div className="col-xs-4">
+                        <div className={questionClass}>
                             <div className="box-first box-container">
                                 <div style={questionStyle}>{this.props.question}</div>
                             </div>
