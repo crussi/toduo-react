@@ -248,12 +248,10 @@ contextsRoutes.route('/',{
     }
 });
 contextsRoutes.route('/roles',{
-    subscriptions: function(params) {
-        //this.register('menuItems', Meteor.subscribe('menu-items'));
-    },
-    action: function() {
-        //ReactLayout.render(SidebarApp, {content: <Container name={"roles"} />, routestate: routestate[Routes.contexts_roles]});
-        ReactLayout.render(SidebarApp, {content(){ return <Container name={"roles"} />}});
+    action: function(params) {
+        ReactLayout.render(SidebarApp, {content() {
+            return <RolesPage />;
+        }});
     }
 });
 contextsRoutes.route('/contexts',{

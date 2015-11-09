@@ -77,4 +77,18 @@ Meteor.startup(function () {
 
 
     }
+
+    //Prep test inbox items
+    Roles.remove({});
+    if (Roles.find().count() === 0) {
+        Roles.insert({_id: 'YqemTo5AUkyh7zRhp9-jOw', Name:'Husband', sortOrder: 0})
+        Roles.insert({_id: 'Np28EenPa0qX3__yXAYh0g', Name:'Dad', sortOrder: 1})
+        Roles.insert({_id: '7XG4yeIB4UO_Lxiv_iDxJg', Name:'Extra mile', sortOrder: 2})
+        Roles.insert({_id: 'mYm4O1o0Y0aoMmLpCiKv8Q', Name:'Self', sortOrder: 3})
+        Roles.insert({_id: 'CqrxU3mdiEOPoj88GD49fw', Name:'Friend', sortOrder: 4})
+        Roles.insert({_id: 'iN5ENKIay0uS6C8aIOnFdw', Name:'Finance Guy', sortOrder: 5})
+        Roles.insert({_id: 'qnt7q8RsTkanDHUZ_scmhQ', Name:'Maint + Org', sortOrder: 6})
+    }
 });
+
+

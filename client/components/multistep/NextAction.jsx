@@ -83,12 +83,12 @@ NextAction = React.createClass({
     },
     submitForm: function (data) {
         //data.NextAction = "My next very long action to do right away and to succeed";
-        data.NextAction = "My next action to do ";
-        data.NextAction ="My next action to do hello brave new world to go up to succeed"
-        data.NextAction ="My next action to do hello brave new world to go up to succeed all day long"
-        data.NextAction ="123456789012345678901234567890123456789012345678901234567890123456789012345"
-        data.NextAction ="12345678901234567890123456789012345678901234567890123"
-
+        //data.NextAction = "My next action to do ";
+        //data.NextAction ="My next action to do hello brave new world to go up to succeed"
+        //data.NextAction ="My next action to do hello brave new world to go up to succeed all day long"
+        //data.NextAction ="123456789012345678901234567890123456789012345678901234567890123456789012345"
+        //data.NextAction ="12345678901234567890123456789012345678901234567890123"
+        data.NextAction = "Take Butterfly to Quest lab for blood draw";
         var task = new Task();
         task.set({
             Title: this.props.Title,

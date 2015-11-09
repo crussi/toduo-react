@@ -186,7 +186,7 @@ nextstep = {
     },
     "DoItNow.Yes" : {
         "currentstep" : DoItNowStep,
-        "nextstep" : ApproveChangeStep,
+        "nextstep" : InboxTransitionStep,
         "nextsteplevel" : 6,
         "mintotalsteps" : 6,
         "maxtotalsteps" : 6,
@@ -224,9 +224,9 @@ nextstep = {
         "minpctdone" : 0.75,
         "avgpctdone" : 0.75
     },
-    "Delegate.Next" : {
+    "Delegate.Submit" : {
         "currentstep" : DelegateStep,
-        "nextstep" : ApproveChangeStep,
+        "nextstep" : InboxTransitionStep,
         "nextsteplevel" : 7,
         "mintotalsteps" : 7,
         "maxtotalsteps" : 7,
@@ -254,9 +254,9 @@ nextstep = {
         "minpctdone" : 0.88,
         "avgpctdone" : 0.88
     },
-    "Schedule.Next" : {
+    "Schedule.Submit" : {
         "currentstep" : ScheduleStep,
-        "nextstep" : ApproveChangeStep,
+        "nextstep" : InboxTransitionStep,
         "nextsteplevel" : 8,
         "mintotalsteps" : 8,
         "maxtotalsteps" : 8,
@@ -266,7 +266,7 @@ nextstep = {
     },
     "RefineAction.Next" : {
         "currentstep" : RefineActionStep,
-        "nextstep" : ApproveChangeStep,
+        "nextstep" : InboxTransitionStep,
         "nextsteplevel" : 8,
         "mintotalsteps" : 8,
         "maxtotalsteps" : 8,
