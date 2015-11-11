@@ -30,6 +30,9 @@
 .list-items .list-item input[type="text"]:focus {
     cursor: text;
 }
+.list-items .list-item:hover {
+    background: none rgba(0,0,0,0.089);
+}
 .list-page {
     margin-right: 120px;
     /*margin-top: 15px;*/
@@ -66,6 +69,38 @@
     /*transition: 0.4s;*/
     /*box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);*/
 
+}
+.list-items .list-item .delete-item {
+    display: none;
+}
+
+.list-items .list-item.editing .delete-item {
+    display: inline-block;
+}
+
+.list-items .list-item .delete-item {
+    -webkit-box-flex: 0;
+    -moz-box-flex: 0;
+    -webkit-flex: 0 0 3rem;
+    -ms-flex: 0 0 3rem;
+    flex: 0 0 3rem;
+}
+.list-items .list-item .delete-item {
+    color: #cccccc;
+    line-height: 3rem;
+    text-align: center;
+}
+
+.list-items .list-item .delete-item:hover {
+    color: #2cc5d2;
+}
+
+.list-items .list-item .delete-item:active {
+    color: #555555;
+}
+
+.list-items .list-item .delete-item .icon-trash {
+    font-size: 1.1em;
 }
 .list-narrow {
     width: 200px;

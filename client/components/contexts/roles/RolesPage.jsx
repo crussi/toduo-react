@@ -1,8 +1,6 @@
 const {
     List,
     ListItem,
-    ListDivider,
-    Avatar,
     TextField,
     Card,
     CardHeader,
@@ -16,6 +14,7 @@ const {
 
 RolesPage = React.createClass({
     mixins: [ReactMeteorData],
+
     getMeteorData() {
 
         const subHandles = [
@@ -46,7 +45,12 @@ RolesPage = React.createClass({
             taskBeingEditedId: taskId
         });
     },
-
+    onRemoveItem(itemId) {
+        console.log('onRemoveItem itemId: ' + itemId);
+    },
+    onTextChange(itemId, newText) {
+        console.log('onTextChange itemId: ' + itemId + ' newText: ' + newText);
+    },
     render(){
         let titleStyle = {
             fontSize: 30,
@@ -66,8 +70,8 @@ RolesPage = React.createClass({
             background: 'transparent'
         };
         comp = this.data.roles.map((role) => {
-            console.dir(role);
-            console.log(role.Name);
+            //console.dir(role);
+            //console.log(role.Name);
             let itemProps = {
                 key: role._id,
                 primaryText: role.Name,
@@ -81,12 +85,15 @@ RolesPage = React.createClass({
             };
 
             return [
-                <TodoItem
+                <ContextItem
                     key={ role._id }
-                    task={ role }
+                    item={ role }
                     beingEdited={ role._id === this.state.taskBeingEditedId }
                     onInitiateEdit={ this.setTaskBeingEdited.bind(this, role._id) }
-                    onStopEdit={ this.setTaskBeingEdited.bind(this, null) } />
+                    onStopEdit={ this.setTaskBeingEdited.bind(this, null) }
+                    onRemoveItem={ this.onRemoveItem.bind(this, role._id)}
+                    onTextChange={ this.onTextChange.bind(this, role._id)}
+                    />
 
             ]
         });
