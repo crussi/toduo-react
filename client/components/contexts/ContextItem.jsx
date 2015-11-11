@@ -29,7 +29,10 @@ ContextItem = React.createClass({
         this.setState({ focused: false });
         this.props.onStopEdit();
     },
-
+    onRemoveItem() {
+        //Meteor.call("/todos/delete", this.props.item._id);
+        this.props.onRemoveItem();
+    },
     onTextChange(event) {
         const curText = event.target.value;
         this.setState({curText: curText});
@@ -43,12 +46,6 @@ ContextItem = React.createClass({
 
         this.updateText(curText);
     },
-
-    onRemoveItem() {
-        //Meteor.call("/todos/delete", this.props.item._id);
-        this.props.onRemoveItem();
-    },
-
     render() {
         let className = "list-item";
 
