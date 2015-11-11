@@ -1,3 +1,7 @@
+const {
+    Paper
+    } = mui;
+
 TodoItem = React.createClass({
     propTypes: {
         task: React.PropTypes.object.isRequired,
@@ -62,28 +66,23 @@ TodoItem = React.createClass({
         //}
 
         return (
-            <div className={ className }>
-                <label className="checkbox">
+            //<Paper zDetph={1}>
+                <div className={ className }>
+
                     <input
-                        type="checkbox"
-                        //checked={ this.props.task.checked }
-                        name="checked"
-                        onChange={ this.onCheckboxChange } />
-                    <span className="checkbox-custom" />
-                </label>
-                <input
-                    type="text"
-                    value={this.state.focused ? this.state.curText : this.props.task.Name}
-                    placeholder="Task name"
-                    onFocus={ this.onFocus }
-                    onBlur={ this.onBlur }
-                    onChange={ this.onTextChange } />
-                <a className="delete-item"
-                   onClick={ this.removeThisItem }
-                   onMouseDown={ this.removeThisItem }>
-                    <span className="icon-trash" />
-                </a>
-            </div>
+                        type="text"
+                        value={this.state.focused ? this.state.curText : this.props.task.Name}
+                        placeholder="Task name"
+                        onFocus={ this.onFocus }
+                        onBlur={ this.onBlur }
+                        onChange={ this.onTextChange } />
+                    <a className="delete-item"
+                       onClick={ this.removeThisItem }
+                       onMouseDown={ this.removeThisItem }>
+                        <span className="icon-trash" />
+                    </a>
+                </div>
+            //</Paper>
         );
     }
 });

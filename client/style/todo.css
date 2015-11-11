@@ -1,2 +1,83 @@
 
 
+.list-items .list-item input[type="text"] {
+    background: transparent;
+    cursor: pointer;
+}
+
+.list-items .list-item input[type="text"] {
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+.list-item input[type="text"], .list-item input[type="email"], .list-item input[type="password"], .list-item textarea {
+    /*font-size: 14px;*/
+    line-height: 20px;
+    /*font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+    /*font-style: 400;*/
+    /*padding: .75rem 0;*/
+    padding: 1rem;
+    line-height: 1.5rem !important;
+    border: none;
+    border-radius: 0;
+    box-sizing: border-box;
+    color: #333333;
+    outline: none;
+    margin-left: 20px;
+}
+.list-items .list-item input[type="text"]:focus {
+    cursor: text;
+}
+.list-page {
+    margin-right: 120px;
+    /*margin-top: 15px;*/
+    height: 100%;
+    /*width: 100%;*/
+    background-color: #fff;
+}
+.list-card {
+    margin-top: 20px;
+}
+.list-items .list-item {
+    /*font-size: 14px;*/
+    line-height: 20px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    height: 3rem;
+    width: 100%;
+    margin-top: 0px;
+    margin-bottom: 1px;
+
+
+    /*background-color: #fff;*/
+    /*border-bottom: 1px solid #eee;*/
+    /*color: #777;*/
+    /*-webkit-transition: 0.4s;*/
+    /*-moz-transition: 0.4s;*/
+    /*-o-transition: 0.4s;*/
+    /*transition: 0.4s;*/
+    /*box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);*/
+
+}
+.list-narrow {
+    width: 200px;
+    min-width: 200px;
+}
+html, button, input, textarea, select {
+    outline: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+button, input, select, textarea {
+    font-size: 100%;
+    margin: 0;
+    vertical-align: baseline;
+}
