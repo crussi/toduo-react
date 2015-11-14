@@ -47,7 +47,13 @@ ContextsPage = React.createClass({
 
             ]
         });
+        let list = <div className="list-items">
+            <List>
+                {comp}
+            </List>
+        </div>
         let cardProps = {
+            content: list,
             backgroundColor: this.props.backgroundColor,
             mediaTitle: this.props.mediaTitle,
             mediaSubtitle: this.props.mediaSubtitle,
@@ -59,14 +65,7 @@ ContextsPage = React.createClass({
             <div className="row">
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div className="row">
-                        <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                            <div className="list-items">
-                                <List>
-                                    {comp}
-                                </List>
-                            </div>
-                        </div>
-                        <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8" ref="tasks">
+                        <div className="col-xs-offset-1 col-xs-8 col-sm-8 col-md-8 col-lg-8" ref="tasks">
                             <div className="list-card">
                                 <ContextCard {...cardProps}/>
                             </div>

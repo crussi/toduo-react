@@ -56,8 +56,8 @@ listsRoutes.route('/trash', {action: renderf(Container, { name: "trash" }) } );
 var contextsRoutes = routeGroup('/contexts', 'contexts');
 contextsRoutes.route('/', {action: renderf(Container, { name: "contexts" }) } );
 contextsRoutes.route('/roles', {action: renderf(RolesPage) } );
-contextsRoutes.route('/contexts', {action: renderf(Container, { name: "contexts" }) } );
-contextsRoutes.route('/flags', {action: renderf(Container, { name: "flags" }) } );
+contextsRoutes.route('/contexts', {action: renderf(ContextsPage) } );
+contextsRoutes.route('/flags', {action: renderf(FlagsPage) } );
 contextsRoutes.route('/delegates', {action: renderf(Container, { name: "delegates" }) } );
 
 var settingsRoutes = routeGroup('/settings', 'settings');

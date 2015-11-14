@@ -13,3 +13,11 @@ Meteor.publish('project', function(id) {
 Meteor.publish('roles', function() {
     return Roles.find({});
 });
+
+Meteor.publish('flags', function() {
+    return Flags.find({});
+});
+
+Meteor.publish('contexts', function() {
+    return Contexts.find({});
+});
