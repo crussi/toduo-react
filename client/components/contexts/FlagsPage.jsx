@@ -31,6 +31,7 @@ FlagsPage = React.createClass({
 
         let contextProps = {
             backgroundColor: "#009688",
+            icon: "flag",
             mediaTitle: "Flags",
             mediaSubtitle:"These flags help categorize your tasks.",
             cardTitle: "What flags will help you categorize your tasks?",
@@ -38,6 +39,6 @@ FlagsPage = React.createClass({
             data: this.data
         }
 
-        return <ContextsPage {...contextProps}/>
+        return <ContextPage {...contextProps}/>
     }
 });

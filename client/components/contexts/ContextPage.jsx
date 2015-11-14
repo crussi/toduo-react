@@ -1,13 +1,19 @@
 const {
     List,
+    ListDivider,
     TextField,
     Card,
     CardMedia,
     CardTitle,
-    CardText
+    CardText,
+    FloatingActionButton,
+    FontIcon,
+
     } = mui;
 
-ContextsPage = React.createClass({
+const Colors = mui.Colors;
+
+ContextPage = React.createClass({
 
     getInitialState() {
         return {
@@ -47,13 +53,21 @@ ContextsPage = React.createClass({
 
             ]
         });
-        let list = <div className="list-items">
-            <List>
-                {comp}
-            </List>
-        </div>
+        let list =  <div className="row">
+                        <div className="list-items col-xs-4">
+                            <List>
+                                {comp}
+                            </List>
+                        </div>
+                        <div className="col-xs-4 align-bottom">
+                            <FloatingActionButton>
+                                <FontIcon className="muidocs-icon-action-home" />
+                            </FloatingActionButton>
+                        </div>
+                    </div>
         let cardProps = {
             content: list,
+            icon: this.props.icon,
             backgroundColor: this.props.backgroundColor,
             mediaTitle: this.props.mediaTitle,
             mediaSubtitle: this.props.mediaSubtitle,
@@ -65,7 +79,7 @@ ContextsPage = React.createClass({
             <div className="row">
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div className="row">
-                        <div className="col-xs-offset-1 col-xs-8 col-sm-8 col-md-8 col-lg-8" ref="tasks">
+                        <div className="col-xs-offset-1 col-xs-10 col-sm-10 col-md-10 col-lg-10" ref="tasks">
                             <div className="list-card">
                                 <ContextCard {...cardProps}/>
                             </div>

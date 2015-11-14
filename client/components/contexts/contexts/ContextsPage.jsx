@@ -29,15 +29,19 @@ ContextsPage = React.createClass({
     },
     render(){
 
+        let cardText = "Whether you're at the store, at work, at home, online or on the phone, ";
+        cardText += "these are the places you get things done.  Also, during downtime, this weekend, ";
+        cardText += "on the way home are examples of when you might do something.  These are all contexts."
         let contextProps = {
             backgroundColor: "#009688",
+            icon: "pin",
             mediaTitle: "Contexts",
-            mediaSubtitle:"The context in which tasks should be done.",
-            cardTitle: "In what contexts do you normally complete tasks?",
-            cardText: 'Contexts, such as work, store, online, etc. will help you select tasks to be done at the right time.',
+            mediaSubtitle:"Where and when you get things done",
+            cardTitle: "",
+            cardText: cardText,
             data: this.data
         }
 
-        return <ContextsPage {...contextProps}/>
+        return <ContextPage {...contextProps}/>
     }
 });

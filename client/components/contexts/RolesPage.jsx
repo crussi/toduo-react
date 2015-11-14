@@ -31,6 +31,7 @@ RolesPage = React.createClass({
 
         let contextProps = {
             backgroundColor: "#009688",
+            icon: "local-offer",
             mediaTitle: "Roles",
             mediaSubtitle:"The roles you play in life, that matter most to you!",
             cardTitle: "What are your most important roles?",
@@ -38,6 +39,6 @@ RolesPage = React.createClass({
             data: this.data
         }
 
-        return <ContextsPage {...contextProps}/>
+        return <ContextPage {...contextProps}/>
     }
 });

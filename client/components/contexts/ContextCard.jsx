@@ -51,20 +51,21 @@ ContextCard = React.createClass({
             display: 'block',
         };
         let mediaStyle = {
-            //backgroundColor: this.props.backgroundColor
+            backgroundColor: this.props.backgroundColor,
+            position: 'relative'
         };
         let overlayContentStyle = {
             background: 'transparent'
         };
-        let mediaTitle = <CardTitle title={this.props.mediaTitle} subtitle={this.props.mediaSubtitle}
-                                    titleStyle={titleStyle} subtitleStyle={subtitleStyle}
-            />
+        let iconClass = "zmdi zmdi-" + this.props.icon + " context-icon";
+        let mediaTitle = <div className="context-title"><CardTitle title={this.props.mediaTitle} subtitle={this.props.mediaSubtitle}
+                                    titleStyle={titleStyle} subtitleStyle={subtitleStyle}/>
+        <i className={iconClass}/>
+        </div>
 
         return <Card>
             <CardMedia mediaStyle={mediaStyle} overlayContentStyle={overlayContentStyle} overlay={mediaTitle}>
-
                 <img src="/images/Transparent.gif" height="150px" ref="something"/>
-
             </CardMedia>
 
             <CardText>

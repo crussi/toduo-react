@@ -105,7 +105,7 @@ Meteor.startup(function () {
         Contexts.insert({_id: '439xlfFRskqc32BMBjujIw', 'AccountId': 'jADe-P9Nzke_Tkio1IVnRw', 'UserId': 'g94HOmCDVkiKEl0NyuBc8w' , Name:'Grocery Store'});
         Contexts.insert({_id: '1cI9Xb8g7UGf0mVVIs-BJw', 'AccountId': 'jADe-P9Nzke_Tkio1IVnRw', 'UserId': 'g94HOmCDVkiKEl0NyuBc8w' , Name:'Making Calls'});
         Contexts.insert({_id: 'TRRBZFhlp0GNwF8J5FoOGw', 'AccountId': 'jADe-P9Nzke_Tkio1IVnRw', 'UserId': 'g94HOmCDVkiKEl0NyuBc8w' , Name:'Errands'});
-        Contexts.insert({_id: 'coGjsF9_o0_k5Sc3j9RLUQ', 'AccountId': 'jADe-P9Nzke_Tkio1IVnRw', 'UserId': 'g94HOmCDVkiKEl0NyuBc8w' , Name:'Doing Bills'});
+        Contexts.insert({_id: 'coGjsF9_o0_k5Sc3j9RLUQ', 'AccountId': 'jADe-P9Nzke_Tkio1IVnRw', 'UserId': 'g94HOmCDVkiKEl0NyuBc8w' , Name:'Weekend'});
     }
 });
 
