@@ -1,7 +1,11 @@
 
 RolesPage = React.createClass({
     mixins: [ReactMeteorData],
-
+    getInitialState: function () {
+        return {
+            updateTime: null
+        };
+    },
     getMeteorData() {
 
         const subHandles = [
@@ -23,9 +27,42 @@ RolesPage = React.createClass({
     },
     onRemoveItem(itemId) {
         console.log('roles onRemoveItem itemId: ' + itemId);
+        Meteor.call("/role/delete", itemId, (err, res) => {
+            if (err) {
+                console.log('error');
+                console.dir(err);
+                return;
+            } else {
+                console.log("role delete success");
+                this.setState({updateTime: (new Date()).getTime()});
+            }
+        });
+    },
+    onAddItem() {
+        console.log('roles onAddItem');
+        Meteor.call("/role/addNew", {Name:"New role"}, (err, res) => {
+            if (err) {
+                console.log('error');
+                console.dir(err);
+                return;
+            } else {
+                console.log("role add success");
+                this.setState({updateTime: (new Date()).getTime()});
+            }
+        });
     },
     onTextChange(itemId, newText) {
         console.log('roles onTextChange itemId: ' + itemId + ' newText: ' + newText);
+        Meteor.call("/role/setName", {_id: itemId, Name:newText}, (err, res) => {
+            if (err) {
+                console.log('error');
+                console.dir(err);
+                return;
+            } else {
+                console.log("role update success");
+                this.setState({updateTime: (new Date()).getTime()});
+            }
+        });
     },
     render(){
 
@@ -36,7 +73,10 @@ RolesPage = React.createClass({
             mediaSubtitle:"The roles you play in life, that matter most to you!",
             cardTitle: "What are your most important roles?",
             cardText: "Everything you do ties back to one of these important roles.  The sum of these roles will help define who you are and where you spend your time.  Are you a spouse, a parent, a friend?  If so, use these role areas to help you be certain you're investing your time wisely.",
-            data: this.data
+            data: this.data,
+            onTextChange: this.onTextChange,
+            onRemoveItem: this.onRemoveItem,
+            onAddItem: this.onAddItem
         }
 
         return <ContextPage {...contextProps}/>

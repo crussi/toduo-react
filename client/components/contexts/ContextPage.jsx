@@ -27,8 +27,12 @@ ContextPage = React.createClass({
         });
     },
     onRemoveItem(itemId) {
-        //console.log('onRemoveItem itemId: ' + itemId);
+        console.log('ContextPage onRemoveItem itemId: ' + itemId);
         this.props.onRemoveItem(itemId);
+    },
+    onAddItem() {
+        console.log('ContextPage onAddItem');
+        this.props.onAddItem();
     },
     onTextChange(itemId, newText) {
         //console.log('onTextChange itemId: ' + itemId + ' newText: ' + newText);
@@ -60,7 +64,7 @@ ContextPage = React.createClass({
                             </List>
                         </div>
                         <div className="context-add-btn">
-                            <FloatingActionButton>
+                            <FloatingActionButton onClick={this.onAddItem}>
                                 <FontIcon className="zmdi zmdi-plus" />
                             </FloatingActionButton>
                         </div>

@@ -1,7 +1,11 @@
 
 FlagsPage = React.createClass({
     mixins: [ReactMeteorData],
-
+    getInitialState: function () {
+        return {
+            updateTime: null
+        };
+    },
     getMeteorData() {
 
         const subHandles = [
@@ -14,7 +18,7 @@ FlagsPage = React.createClass({
 
         return {
             subsReady: subsReady,
-            items: Flags.find({}),
+            items: Flags.find({}, { sort: { sortorder: 1 } }),
             //currentUser: Meteor.user(),
             //disconnected: ShowConnectionIssues.get() && (! Meteor.status().connected)
             disconnected: false
@@ -23,9 +27,42 @@ FlagsPage = React.createClass({
     },
     onRemoveItem(itemId) {
         console.log('flags onRemoveItem itemId: ' + itemId);
+        Meteor.call("/flag/delete", itemId, (err, res) => {
+            if (err) {
+                console.log('error');
+                console.dir(err);
+                return;
+            } else {
+                console.log("flag delete success");
+                this.setState({updateTime: (new Date()).getTime()});
+            }
+        });
+    },
+    onAddItem() {
+        console.log('flags onAddItem');
+        Meteor.call("/flag/addNew", {Name:"New flag"}, (err, res) => {
+            if (err) {
+                console.log('error');
+                console.dir(err);
+                return;
+            } else {
+                console.log("flag add success");
+                this.setState({updateTime: (new Date()).getTime()});
+            }
+        });
     },
     onTextChange(itemId, newText) {
         console.log('flags onTextChange itemId: ' + itemId + ' newText: ' + newText);
+        Meteor.call("/flag/setName", {_id: itemId, Name:newText}, (err, res) => {
+            if (err) {
+                console.log('error');
+                console.dir(err);
+                return;
+            } else {
+                console.log("flag update success");
+                this.setState({updateTime: (new Date()).getTime()});
+            }
+        });
     },
     render(){
 
@@ -36,7 +73,10 @@ FlagsPage = React.createClass({
             mediaSubtitle:"These flags help categorize your tasks.",
             cardTitle: "What flags will help you categorize your tasks?",
             cardText: 'Flags like "Priority", "Vacation", "Wedding", etc. will help you connect related tasks.',
-            data: this.data
+            data: this.data,
+            onTextChange: this.onTextChange,
+            onRemoveItem: this.onRemoveItem,
+            onAddItem: this.onAddItem
         }
 
         return <ContextPage {...contextProps}/>

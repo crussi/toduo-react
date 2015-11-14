@@ -63,8 +63,7 @@ ContextItem = React.createClass({
                 onBlur={ this.onBlur }
                 onChange={ this.onTextChange } />
                 <a className="delete-item"
-                   onClick={ this.onRemoveItem }
-                   onMouseDown={ this.onRemoveItem }>
+                   onClick={ this.onRemoveItem }>
                     <i className="zmdi zmdi-close icon-trash" />
                 </a>
         </div>
