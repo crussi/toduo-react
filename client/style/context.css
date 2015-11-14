@@ -1,5 +1,8 @@
 
-
+.list-items {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
 .list-items .list-item input[type="text"] {
     background: transparent;
     cursor: pointer;
@@ -74,7 +77,8 @@
     display: none;
 }
 
-.list-items .list-item.editing .delete-item {
+/*.list-items .list-item.editing .delete-item {*/
+.list-items .list-item:hover .delete-item {
     display: inline-block;
 }
 
@@ -86,13 +90,13 @@
     flex: 0 0 3rem;
 }
 .list-items .list-item .delete-item {
-    color: #cccccc;
+    color: #aaa;
     line-height: 3rem;
     text-align: center;
 }
 
 .list-items .list-item .delete-item:hover {
-    color: #2cc5d2;
+    color: #ff4081;
 }
 
 .list-items .list-item .delete-item:active {
@@ -116,8 +120,16 @@ button, input, select, textarea {
     margin: 0;
     vertical-align: baseline;
 }
+.context-section {
+    position: relative;
+}
 .context-title {
     position: relative;
+}
+.context-add-btn {
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
 }
 .context-icon {
     position: absolute;

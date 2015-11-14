@@ -7,7 +7,7 @@ const {
     CardTitle,
     CardText,
     FloatingActionButton,
-    FontIcon,
+    FontIcon
 
     } = mui;
 
@@ -53,15 +53,15 @@ ContextPage = React.createClass({
 
             ]
         });
-        let list =  <div className="row">
+        let list =  <div className="row context-section">
                         <div className="list-items col-xs-4">
                             <List>
                                 {comp}
                             </List>
                         </div>
-                        <div className="col-xs-4 align-bottom">
+                        <div className="context-add-btn">
                             <FloatingActionButton>
-                                <FontIcon className="muidocs-icon-action-home" />
+                                <FontIcon className="zmdi zmdi-plus" />
                             </FloatingActionButton>
                         </div>
                     </div>
