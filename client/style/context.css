@@ -45,6 +45,7 @@
 }
 .list-card {
     margin-top: 20px;
+    position: relative;
 }
 .list-items .list-item {
     /*font-size: 14px;*/
@@ -119,9 +120,6 @@ button, input, select, textarea {
     font-size: 100%;
     margin: 0;
     vertical-align: baseline;
-}
-.context-section {
-    position: relative;
 }
 .context-title {
     position: relative;

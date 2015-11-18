@@ -26,40 +26,34 @@ RolesPage = React.createClass({
 
     },
     onRemoveItem(itemId) {
-        console.log('roles onRemoveItem itemId: ' + itemId);
         Meteor.call("/role/delete", itemId, (err, res) => {
             if (err) {
                 console.log('error');
                 console.dir(err);
                 return;
             } else {
-                console.log("role delete success");
                 this.setState({updateTime: (new Date()).getTime()});
             }
         });
     },
     onAddItem() {
-        console.log('roles onAddItem');
         Meteor.call("/role/addNew", {Name:"New role"}, (err, res) => {
             if (err) {
                 console.log('error');
                 console.dir(err);
                 return;
             } else {
-                console.log("role add success");
                 this.setState({updateTime: (new Date()).getTime()});
             }
         });
     },
     onTextChange(itemId, newText) {
-        console.log('roles onTextChange itemId: ' + itemId + ' newText: ' + newText);
         Meteor.call("/role/setName", {_id: itemId, Name:newText}, (err, res) => {
             if (err) {
                 console.log('error');
                 console.dir(err);
                 return;
             } else {
-                console.log("role update success");
                 this.setState({updateTime: (new Date()).getTime()});
             }
         });

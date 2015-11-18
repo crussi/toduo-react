@@ -23,22 +23,17 @@ ContextCard = React.createClass({
     handleResize: function(e) {
         this.trianglify();
     },
-
-    adjustTextWidth: function() {
-
-        this.setState({
-            textWidth: (width - 40) + 'px'
-        });
-    },
     componentDidMount: function () {
-        window.addEventListener('resize', this.trianglify);
+        window.addEventListener('resize', this.handleResize);
         this.trianglify();
     },
     componentWillUnmount: function() {
-        window.removeEventListener('resize', this.trianglify);
+        window.removeEventListener('resize', this.handleResize);
     },
     render(){
-
+        let cardStyle = {
+          height: this.props.height
+        };
         let titleStyle = {
             fontSize: 30,
             color: "rgba(255, 255, 255, 0.95)",
@@ -63,7 +58,7 @@ ContextCard = React.createClass({
         <i className={iconClass}/>
         </div>
 
-        return <Card>
+        return <Card style={cardStyle}>
             <CardMedia mediaStyle={mediaStyle} overlayContentStyle={overlayContentStyle} overlay={mediaTitle}>
                 <img src="/images/Transparent.gif" height="150px" ref="something"/>
             </CardMedia>

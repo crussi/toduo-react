@@ -58,7 +58,7 @@ contextsRoutes.route('/', {action: renderf(Container, { name: "contexts" }) } );
 contextsRoutes.route('/roles', {action: renderf(RolesPage) } );
 contextsRoutes.route('/contexts', {action: renderf(ContextsPage) } );
 contextsRoutes.route('/flags', {action: renderf(FlagsPage) } );
-contextsRoutes.route('/delegates', {action: renderf(Container, { name: "delegates" }) } );
+contextsRoutes.route('/delegates', {action: renderf(DelegatesPage) } );
 
 var settingsRoutes = routeGroup('/settings', 'settings');
 settingsRoutes.route('/', {action: renderf(Container, { name: "settings" }) } );

@@ -7,25 +7,7 @@ MultiStep = React.createClass({
         }
     },
     handleNextStep(val){
-        console.log('multisep val: ' + val );
         this.setState({nextkey: this.state.nextkey.concat(val)});
-        //switch (val.toUpperCase()) {
-        //
-        //    case "ROUTE":
-        //        this.props.callback(val);
-        //        break;
-        //    case "DONE":
-        //        this.props.callback(val);
-        //        break;
-        //    default:
-        //        this.setState({nextkey: this.state.nextkey.concat(val)});
-        //        break;
-        //}
-        //if (val.toUpperCase() !== "PREV") {
-        //    this.setState({nextkey: this.state.nextkey.concat(val)});
-        //} else {
-        //    this.setState({nextkey: this.state.nextkey.slice(0, -1)});
-        //}
     },
     handlePrev(){
         this.setState({nextkey: this.state.nextkey.slice(0, -1)});

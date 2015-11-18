@@ -18,9 +18,26 @@ ContextPage = React.createClass({
     getInitialState() {
         return {
             taskBeingEditedId: null,
+            initCardHeight: 0,
+            height: '550px'
         };
     },
+    handleResize: function(e) {
+        let containerHeight = this.refs.container.getDOMNode().offsetHeight-120;
 
+        let height = Math.max(containerHeight,this.state.initCardHeight);
+        this.setState({height: height+ 'px'});
+    },
+    componentDidMount: function () {
+        let cardHeight = this.refs.card.getDOMNode().offsetHeight;
+        this.setState({'initCardHeight': cardHeight});
+        window.addEventListener('resize', this.handleResize);
+        this.handleResize();
+
+    },
+    componentWillUnmount: function() {
+        window.removeEventListener('resize', this.handleResize);
+    },
     setTaskBeingEdited(taskId) {
         this.setState({
             taskBeingEditedId: taskId
@@ -41,7 +58,6 @@ ContextPage = React.createClass({
     render(){
 
         comp = this.props.data.items.map((item) => {
-
             let itemProps = {
                 "key": item._id,
                 "item": item,
@@ -57,18 +73,25 @@ ContextPage = React.createClass({
 
             ]
         });
-        let list =  <div className="row context-section">
+        //
+        //let sectionStyle = {
+        //    height:this.props.height,
+        //    minHeight:this.props.height
+        //};
+        //console.log('height: ' + this.state.height);
+        //let sectionStyle = {
+        //    height:this.state.height,
+        //    minHeight:this.state.height
+        //};
+        //console.dir(sectionStyle);
+        let list =  <div className="row">
                         <div className="list-items col-xs-4">
                             <List>
                                 {comp}
                             </List>
                         </div>
-                        <div className="context-add-btn">
-                            <FloatingActionButton onClick={this.onAddItem}>
-                                <FontIcon className="zmdi zmdi-plus" />
-                            </FloatingActionButton>
-                        </div>
-                    </div>
+                    </div>;
+
         let cardProps = {
             content: list,
             icon: this.props.icon,
@@ -76,16 +99,23 @@ ContextPage = React.createClass({
             mediaTitle: this.props.mediaTitle,
             mediaSubtitle: this.props.mediaSubtitle,
             cardTitle: this.props.cardTitle,
-            cardText: this.props.cardText
-        }
+            cardText: this.props.cardText,
+            height: this.state.height
+        };
 
-        return <div className="list-page">
+        return <div className="list-page" ref="container">
             <div className="row">
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div className="row">
                         <div className="col-xs-offset-1 col-xs-10 col-sm-10 col-md-10 col-lg-10" ref="tasks">
                             <div className="list-card">
-                                <ContextCard {...cardProps}/>
+                                <ContextCard {...cardProps} ref="card"/>
+                                <div className="context-add-btn">
+                                    <FloatingActionButton onClick={this.onAddItem}>
+                                        <FontIcon className="zmdi zmdi-plus" />
+                                    </FloatingActionButton>
+                                </div>
+
                             </div>
                         </div>
                     </div>

@@ -26,14 +26,12 @@ FlagsPage = React.createClass({
 
     },
     onRemoveItem(itemId) {
-        console.log('flags onRemoveItem itemId: ' + itemId);
         Meteor.call("/flag/delete", itemId, (err, res) => {
             if (err) {
                 console.log('error');
                 console.dir(err);
                 return;
             } else {
-                console.log("flag delete success");
                 this.setState({updateTime: (new Date()).getTime()});
             }
         });
@@ -52,14 +50,12 @@ FlagsPage = React.createClass({
         });
     },
     onTextChange(itemId, newText) {
-        console.log('flags onTextChange itemId: ' + itemId + ' newText: ' + newText);
         Meteor.call("/flag/setName", {_id: itemId, Name:newText}, (err, res) => {
             if (err) {
                 console.log('error');
                 console.dir(err);
                 return;
             } else {
-                console.log("flag update success");
                 this.setState({updateTime: (new Date()).getTime()});
             }
         });

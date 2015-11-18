@@ -6,7 +6,6 @@ ReferencePage = React.createClass({
     getMeteorData() {
         // Get list ID from ReactRouter
         const referenceId = this.props.id;
-        console.log('referenceId: ' + referenceId);
         // Subscribe to the tasks we need to render this component
         const subHandle = Meteor.subscribe("references", referenceId);
 

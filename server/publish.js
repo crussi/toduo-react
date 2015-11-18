@@ -21,3 +21,7 @@ Meteor.publish('flags', function() {
 Meteor.publish('contexts', function() {
     return Contexts.find({});
 });
+
+Meteor.publish('delegates', function() {
+    return Delegates.find({});
+});

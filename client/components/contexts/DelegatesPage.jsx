@@ -1,5 +1,5 @@
 
-ContextsPage = React.createClass({
+DelegatesPage = React.createClass({
     mixins: [ReactMeteorData],
     getInitialState: function () {
         return {
@@ -9,7 +9,7 @@ ContextsPage = React.createClass({
     getMeteorData() {
 
         const subHandles = [
-            Meteor.subscribe("contexts")
+            Meteor.subscribe("delegates")
         ];
 
         const subsReady = _.all(subHandles, function (handle) {
@@ -18,7 +18,7 @@ ContextsPage = React.createClass({
 
         return {
             subsReady: subsReady,
-            items: Contexts.find({}, { sort: { sortorder: 1 } }),
+            items: Contacts.find({}, { sort: { sortorder: 1 } }),
             //currentUser: Meteor.user(),
             //disconnected: ShowConnectionIssues.get() && (! Meteor.status().connected)
             disconnected: false
@@ -26,31 +26,31 @@ ContextsPage = React.createClass({
 
     },
     onRemoveItem(itemId) {
-        Meteor.call("/context/delete", itemId, (err, res) => {
+        Meteor.call("/contact/delete", itemId, (err, res) => {
             if (err) {
                 console.log('error');
                 console.dir(err);
                 return;
             } else {
-                console.log("context delete success");
                 this.setState({updateTime: (new Date()).getTime()});
             }
         });
     },
     onAddItem() {
-        Meteor.call("/context/addNew", {Name:"New context"}, (err, res) => {
+        console.log('delegates onAddItem');
+        Meteor.call("/contact/addNew", {Name:"New delegate"}, (err, res) => {
             if (err) {
                 console.log('error');
                 console.dir(err);
                 return;
             } else {
+                console.log("delegate add success");
                 this.setState({updateTime: (new Date()).getTime()});
             }
         });
     },
     onTextChange(itemId, newText) {
-        //console.log('contexts onTextChange itemId: ' + itemId + ' newText: ' + newText);
-        Meteor.call("/context/setName", {_id: itemId, Name:newText}, (err, res) => {
+        Meteor.call("/contact/setName", {_id: itemId, Name:newText}, (err, res) => {
             if (err) {
                 console.log('error');
                 console.dir(err);
@@ -61,15 +61,13 @@ ContextsPage = React.createClass({
         });
     },
     render(){
-        let cardText = "Whether you're at the store, at work, at home, online or on the phone, ";
-        cardText += "these are the places you get things done.  Also, during downtime, this weekend, ";
-        cardText += "on the way home are examples of when you might do something.  These are all contexts."
-
+        let cardText = "Learn to delegate tasks whenever possible.  You can keep track of to whom you've delegated tasks.  ";
+        cardText += "Here you can also track useful service providers."
         let contextProps = {
             backgroundColor: "#009688",
-            icon: "pin ",
-            mediaTitle: "Contexts",
-            mediaSubtitle:"Where and when you get things done",
+            icon: "account-box",
+            mediaTitle: "Delegates",
+            mediaSubtitle:"Does a task require someone else's action?",
             cardTitle: "",
             cardText: cardText,
             data: this.data,

@@ -23,11 +23,9 @@ CollapseCardBody = React.createClass({
             let $el = $(this.getDOMNode());
             switch (nextProps.slideDirection.trim()) {
                 case 'up':
-                    console.log('slideUp');
                     $el.slideUp('animationDuration: 400');
                     break;
                 case 'down':
-                    console.log('slidedown');
                     $el.slideDown('animationDuration: 400');
                     break;
                 default:
