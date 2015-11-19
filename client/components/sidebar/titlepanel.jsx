@@ -28,15 +28,32 @@ const styles = {
         width: '100%'
 
         //marginRight: '20px'
-    },
+    }
 };
 
 TitlePanel = React.createClass({
+    getInitialState() {
+        return {
+            height: '100%'
+        };
+    },
+    handleResize: function(e) {
+        let viewportheight = window.innerHeight - 54;
+        this.setState({height: viewportheight + 'px'});
+    },
+    componentDidMount: function () {
+        window.addEventListener('resize', this.handleResize);
+        this.handleResize();
+
+    },
+    componentWillUnmount: function() {
+        window.removeEventListener('resize', this.handleResize);
+    },
     render() {
         let rootStyle = this.props.style ?
             update(styles.root, {$merge: this.props.style}) :
             styles.root;
-
+        styles.content.height = this.state.height;
         return (
             <div style={rootStyle}>
                 <div style={styles.header}>{this.props.title}</div>

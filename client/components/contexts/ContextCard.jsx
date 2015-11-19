@@ -32,7 +32,10 @@ ContextCard = React.createClass({
     },
     render(){
         let cardStyle = {
-          height: this.props.height
+          //height: this.props.height
+            height: '90%'
+          //  flex:2,
+          //  display: 'flex'
         };
         let titleStyle = {
             fontSize: 30,

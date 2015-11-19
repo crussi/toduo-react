@@ -103,12 +103,12 @@ ContextPage = React.createClass({
             height: this.state.height
         };
 
-        return <div className="list-page" ref="container">
-            <div className="row">
-                <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div className="row">
-                        <div className="col-xs-offset-1 col-xs-10 col-sm-10 col-md-10 col-lg-10" ref="tasks">
-                            <div className="list-card">
+        return <div className="list-page full-height" ref="container">
+            <div className="row full-height">
+                <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 full-height">
+                    <div className="row full-height">
+                        <div className="col-xs-offset-1 col-xs-10 col-sm-10 col-md-10 col-lg-10 full-height" ref="tasks">
+                            <div className="list-card full-height">
                                 <ContextCard {...cardProps} ref="card"/>
                                 <div className="context-add-btn">
                                     <FloatingActionButton onClick={this.onAddItem}>

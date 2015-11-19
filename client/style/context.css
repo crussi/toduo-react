@@ -126,7 +126,7 @@ button, input, select, textarea {
 }
 .context-add-btn {
     position: absolute;
-    bottom: 30px;
+    bottom: 100px;
     right: 40px;
 }
 .context-icon {
@@ -135,4 +135,7 @@ button, input, select, textarea {
     right: 40px;
     font-size: 150px;
     color: rgba(250,250,250,0.50);
+}
+.full-height {
+    height: 100%;
 }
