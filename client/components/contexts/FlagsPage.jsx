@@ -70,6 +70,7 @@ FlagsPage = React.createClass({
             cardTitle: "What flags will help you categorize your tasks?",
             cardText: 'Flags like "Priority", "Vacation", "Wedding", etc. will help you connect related tasks.',
             data: this.data,
+            sortable: false,
             onTextChange: this.onTextChange,
             onRemoveItem: this.onRemoveItem,
             onAddItem: this.onAddItem

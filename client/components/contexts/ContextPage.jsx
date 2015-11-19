@@ -17,26 +17,8 @@ ContextPage = React.createClass({
 
     getInitialState() {
         return {
-            taskBeingEditedId: null,
-            initCardHeight: 0,
-            height: '550px'
+            taskBeingEditedId: null
         };
-    },
-    handleResize: function(e) {
-        let containerHeight = this.refs.container.getDOMNode().offsetHeight-120;
-
-        let height = Math.max(containerHeight,this.state.initCardHeight);
-        this.setState({height: height+ 'px'});
-    },
-    componentDidMount: function () {
-        let cardHeight = this.refs.card.getDOMNode().offsetHeight;
-        this.setState({'initCardHeight': cardHeight});
-        window.addEventListener('resize', this.handleResize);
-        this.handleResize();
-
-    },
-    componentWillUnmount: function() {
-        window.removeEventListener('resize', this.handleResize);
     },
     setTaskBeingEdited(taskId) {
         this.setState({
@@ -57,22 +39,26 @@ ContextPage = React.createClass({
     },
     render(){
 
-        comp = this.props.data.items.map((item) => {
-            let itemProps = {
-                "key": item._id,
-                "item": item,
-                "beingEdited": item._id === this.state.taskBeingEditedId,
-                "onInitiateEdit": this.setTaskBeingEdited.bind(this, item._id),
-                "onStopEdit": this.setTaskBeingEdited.bind(this, null),
-                "onRemoveItem": this.onRemoveItem.bind(this, item._id),
-                "onTextChange": this.onTextChange.bind(this, item._id)
-            };
+            comp = this.props.data.items.map((item) => {
+                let itemProps = {
+                    "key": item._id,
+                    "item": item,
+                    "beingEdited": item._id === this.state.taskBeingEditedId,
+                    "onInitiateEdit": this.setTaskBeingEdited.bind(this, item._id),
+                    "onStopEdit": this.setTaskBeingEdited.bind(this, null),
+                    "onRemoveItem": this.onRemoveItem.bind(this, item._id),
+                    "onTextChange": this.onTextChange.bind(this, item._id)
+                };
 
-            return [
-                <ContextItem {...itemProps}/>
+                return [
+                    <ContextItem {...itemProps}/>
 
-            ]
-        });
+                ]
+            });
+        if (this.props.sortable) {
+            comp = <SortableList list={comp}/>
+        }
+
         //
         //let sectionStyle = {
         //    height:this.props.height,

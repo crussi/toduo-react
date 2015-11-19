@@ -71,6 +71,7 @@ DelegatesPage = React.createClass({
             cardTitle: "",
             cardText: cardText,
             data: this.data,
+            sortable: false,
             onTextChange: this.onTextChange,
             onRemoveItem: this.onRemoveItem,
             onAddItem: this.onAddItem

@@ -68,11 +68,13 @@ RolesPage = React.createClass({
             cardTitle: "What are your most important roles?",
             cardText: "Everything you do ties back to one of these important roles.  The sum of these roles will help define who you are and where you spend your time.  Are you a spouse, a parent, a friend?  If so, use these role areas to help you be certain you're investing your time wisely.",
             data: this.data,
+            sortable: true,
             onTextChange: this.onTextChange,
             onRemoveItem: this.onRemoveItem,
             onAddItem: this.onAddItem
         }
 
         return <ContextPage {...contextProps}/>
+
     }
 });
